@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="burofactorModelStoreContainer" CdmEntityContainer="burofactorEntities1">
+    <EntitySetMapping Name="codigopostal">
+      <EntityTypeMapping TypeName="burofactorModel.codigopostal">
+        <MappingFragment StoreEntitySet="codigopostal">
+          <ScalarProperty Name="idCodigoPostal" ColumnName="idCodigoPostal" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colonia">
+      <EntityTypeMapping TypeName="burofactorModel.colonia">
+        <MappingFragment StoreEntitySet="colonia">
+          <ScalarProperty Name="idColonia" ColumnName="idColonia" />
+          <ScalarProperty Name="Municipio_idMunicipio" ColumnName="Municipio_idMunicipio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consulta">
+      <EntityTypeMapping TypeName="burofactorModel.consulta">
+        <MappingFragment StoreEntitySet="consulta">
+          <ScalarProperty Name="idConsulta" ColumnName="idConsulta" />
+          <ScalarProperty Name="FechaConsulta" ColumnName="FechaConsulta" />
+          <ScalarProperty Name="PlanContratado_idPlanContratado" ColumnName="PlanContratado_idPlanContratado" />
+          <ScalarProperty Name="Interno" ColumnName="Interno" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deuda">
+      <EntityTypeMapping TypeName="burofactorModel.deuda">
+        <MappingFragment StoreEntitySet="deuda">
+          <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+          <ScalarProperty Name="FechaOperacion" ColumnName="FechaOperacion" />
+          <ScalarProperty Name="MontoFinanciado" ColumnName="MontoFinanciado" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+          <ScalarProperty Name="FolioDocumento" ColumnName="FolioDocumento" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="MontoNominal" ColumnName="MontoNominal" />
+          <ScalarProperty Name="Divisa_idDivisa" ColumnName="Divisa_idDivisa" />
+          <ScalarProperty Name="idEmisor" ColumnName="idEmisor" />
+          <ScalarProperty Name="idDeudor" ColumnName="idDeudor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="direccion">
+      <EntityTypeMapping TypeName="burofactorModel.direccion">
+        <MappingFragment StoreEntitySet="direccion">
+          <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+          <ScalarProperty Name="Calle" ColumnName="Calle" />
+          <ScalarProperty Name="NumeroExt" ColumnName="NumeroExt" />
+          <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+          <ScalarProperty Name="Persona_idPersona" ColumnName="Persona_idPersona" />
+          <ScalarProperty Name="CodigoPostal_idCodigoPostal" ColumnName="CodigoPostal_idCodigoPostal" />
+          <ScalarProperty Name="Colonia_idColonia" ColumnName="Colonia_idColonia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="divisa">
+      <EntityTypeMapping TypeName="burofactorModel.divisa">
+        <MappingFragment StoreEntitySet="divisa">
+          <ScalarProperty Name="idDivisa" ColumnName="idDivisa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado">
+      <EntityTypeMapping TypeName="burofactorModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="Pais_idPais" ColumnName="Pais_idPais" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="financiera">
+      <EntityTypeMapping TypeName="burofactorModel.financiera">
+        <MappingFragment StoreEntitySet="financiera">
+          <ScalarProperty Name="idFinanciera" ColumnName="idFinanciera" />
+          <ScalarProperty Name="Regulada" ColumnName="Regulada" />
+          <ScalarProperty Name="Persona_idPersona" ColumnName="Persona_idPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="municipio">
+      <EntityTypeMapping TypeName="burofactorModel.municipio">
+        <MappingFragment StoreEntitySet="municipio">
+          <ScalarProperty Name="idMunicipio" ColumnName="idMunicipio" />
+          <ScalarProperty Name="Estado_idEstado" ColumnName="Estado_idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operacion">
+      <EntityTypeMapping TypeName="burofactorModel.operacion">
+        <MappingFragment StoreEntitySet="operacion">
+          <ScalarProperty Name="idOperacion" ColumnName="idOperacion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="burofactorModel.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="burofactorModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="FechaConstitucion" ColumnName="FechaConstitucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="planconsulta">
+      <EntityTypeMapping TypeName="burofactorModel.planconsulta">
+        <MappingFragment StoreEntitySet="planconsulta">
+          <ScalarProperty Name="idPlanConsulta" ColumnName="idPlanConsulta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="MaxConsultaMes" ColumnName="MaxConsultaMes" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="plancontratado">
+      <EntityTypeMapping TypeName="burofactorModel.plancontratado">
+        <MappingFragment StoreEntitySet="plancontratado">
+          <ScalarProperty Name="idPlanContratado" ColumnName="idPlanContratado" />
+          <ScalarProperty Name="PlanConsulta_idPlanConsulta" ColumnName="PlanConsulta_idPlanConsulta" />
+          <ScalarProperty Name="Financiera_idFinanciera" ColumnName="Financiera_idFinanciera" />
+          <ScalarProperty Name="FechaContrato" ColumnName="FechaContrato" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ContrasenaWS" ColumnName="ContrasenaWS" />
+          <ScalarProperty Name="UsuarioWS" ColumnName="UsuarioWS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="relacionclientefinanciera">
+      <EntityTypeMapping TypeName="burofactorModel.relacionclientefinanciera">
+        <MappingFragment StoreEntitySet="relacionclientefinanciera">
+          <ScalarProperty Name="idRelacionClienteFinanciera" ColumnName="idRelacionClienteFinanciera" />
+          <ScalarProperty Name="CorreoContacto" ColumnName="CorreoContacto" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Financiera_idFinanciera" ColumnName="Financiera_idFinanciera" />
+          <ScalarProperty Name="Persona_idPersona" ColumnName="Persona_idPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="codigopostal_has_colonia" TypeName="burofactorModel.codigopostal_has_colonia" StoreEntitySet="codigopostal_has_colonia">
+      <EndProperty Name="codigopostal">
+        <ScalarProperty Name="idCodigoPostal" ColumnName="CodigoPostal_idCodigoPostal" />
+      </EndProperty>
+      <EndProperty Name="colonia">
+        <ScalarProperty Name="idColonia" ColumnName="Colonia_idColonia" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

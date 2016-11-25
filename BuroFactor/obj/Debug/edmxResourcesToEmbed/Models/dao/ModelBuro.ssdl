@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="burofactorModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="codigopostal">
+    <Key>
+      <PropertyRef Name="idCodigoPostal" />
+    </Key>
+    <Property Name="idCodigoPostal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CP" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.burofactor.codigopostal_has_colonia' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="codigopostal_has_colonia">
+    <Key>
+      <PropertyRef Name="CodigoPostal_idCodigoPostal" />
+      <PropertyRef Name="Colonia_idColonia" />
+    </Key>
+    <Property Name="CodigoPostal_idCodigoPostal" Type="int" Nullable="false" />
+    <Property Name="Colonia_idColonia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="colonia">
+    <Key>
+      <PropertyRef Name="idColonia" />
+    </Key>
+    <Property Name="idColonia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Municipio_idMunicipio" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="consulta">
+    <Key>
+      <PropertyRef Name="idConsulta" />
+    </Key>
+    <Property Name="idConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaConsulta" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="PlanContratado_idPlanContratado" Type="int" Nullable="false" />
+    <Property Name="Interno" Type="bool" Nullable="false" />
+    <Property Name="IP" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="deuda">
+    <Key>
+      <PropertyRef Name="idDeuda" />
+    </Key>
+    <Property Name="idDeuda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaOperacion" Type="date" Nullable="false" />
+    <Property Name="MontoFinanciado" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="FechaPago" Type="date" Nullable="false" />
+    <Property Name="FolioDocumento" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="FechaEmision" Type="date" Nullable="false" />
+    <Property Name="MontoNominal" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="Divisa_idDivisa" Type="int" Nullable="false" />
+    <Property Name="idEmisor" Type="int" Nullable="false" />
+    <Property Name="idDeudor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="direccion">
+    <Key>
+      <PropertyRef Name="idDireccion" />
+    </Key>
+    <Property Name="idDireccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Calle" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="NumeroExt" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="NumeroInterior" Type="varchar" MaxLength="45" />
+    <Property Name="Persona_idPersona" Type="int" Nullable="false" />
+    <Property Name="CodigoPostal_idCodigoPostal" Type="int" Nullable="false" />
+    <Property Name="Colonia_idColonia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="divisa">
+    <Key>
+      <PropertyRef Name="idDivisa" />
+    </Key>
+    <Property Name="idDivisa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" Nullable="false" />
+    <Property Name="Pais_idPais" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="financiera">
+    <Key>
+      <PropertyRef Name="idFinanciera" />
+    </Key>
+    <Property Name="idFinanciera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Regulada" Type="bool" Nullable="false" />
+    <Property Name="Persona_idPersona" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="municipio">
+    <Key>
+      <PropertyRef Name="idMunicipio" />
+    </Key>
+    <Property Name="idMunicipio" Type="int" Nullable="false" />
+    <Property Name="Estado_idEstado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operacion">
+    <Key>
+      <PropertyRef Name="idOperacion" />
+    </Key>
+    <Property Name="idOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="idDeuda" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="idPais" />
+    </Key>
+    <Property Name="idPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="RFC" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="FechaConstitucion" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="planconsulta">
+    <Key>
+      <PropertyRef Name="idPlanConsulta" />
+    </Key>
+    <Property Name="idPlanConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="MaxConsultaMes" Type="int" Nullable="false" />
+    <Property Name="FechaRegistro" Type="date" Nullable="false" />
+    <Property Name="FechaVencimiento" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="plancontratado">
+    <Key>
+      <PropertyRef Name="idPlanContratado" />
+    </Key>
+    <Property Name="idPlanContratado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanConsulta_idPlanConsulta" Type="int" Nullable="false" />
+    <Property Name="Financiera_idFinanciera" Type="int" Nullable="false" />
+    <Property Name="FechaContrato" Type="date" Nullable="false" />
+    <Property Name="Activo" Type="bool" Nullable="false" />
+    <Property Name="ContrasenaWS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UsuarioWS" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="relacionclientefinanciera">
+    <Key>
+      <PropertyRef Name="idRelacionClienteFinanciera" />
+    </Key>
+    <Property Name="idRelacionClienteFinanciera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CorreoContacto" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Alias" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="Financiera_idFinanciera" Type="int" Nullable="false" />
+    <Property Name="Persona_idPersona" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_CodigoPostal_has_Colonia_CodigoPostal1">
+    <End Role="codigopostal" Type="Self.codigopostal" Multiplicity="1" />
+    <End Role="codigopostal_has_colonia" Type="Self.codigopostal_has_colonia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="codigopostal">
+        <PropertyRef Name="idCodigoPostal" />
+      </Principal>
+      <Dependent Role="codigopostal_has_colonia">
+        <PropertyRef Name="CodigoPostal_idCodigoPostal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CodigoPostal_has_Colonia_Colonia1">
+    <End Role="colonia" Type="Self.colonia" Multiplicity="1" />
+    <End Role="codigopostal_has_colonia" Type="Self.codigopostal_has_colonia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="colonia">
+        <PropertyRef Name="idColonia" />
+      </Principal>
+      <Dependent Role="codigopostal_has_colonia">
+        <PropertyRef Name="Colonia_idColonia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Colonia_Municipio1">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="1" />
+    <End Role="colonia" Type="Self.colonia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="idMunicipio" />
+      </Principal>
+      <Dependent Role="colonia">
+        <PropertyRef Name="Municipio_idMunicipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Consulta_PlanContratado1">
+    <End Role="plancontratado" Type="Self.plancontratado" Multiplicity="1" />
+    <End Role="consulta" Type="Self.consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="plancontratado">
+        <PropertyRef Name="idPlanContratado" />
+      </Principal>
+      <Dependent Role="consulta">
+        <PropertyRef Name="PlanContratado_idPlanContratado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Deuda_Divisa1">
+    <End Role="divisa" Type="Self.divisa" Multiplicity="1" />
+    <End Role="deuda" Type="Self.deuda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="divisa">
+        <PropertyRef Name="idDivisa" />
+      </Principal>
+      <Dependent Role="deuda">
+        <PropertyRef Name="Divisa_idDivisa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Deuda_RelacionClienteFinanciera1">
+    <End Role="relacionclientefinanciera" Type="Self.relacionclientefinanciera" Multiplicity="1" />
+    <End Role="deuda" Type="Self.deuda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="relacionclientefinanciera">
+        <PropertyRef Name="idRelacionClienteFinanciera" />
+      </Principal>
+      <Dependent Role="deuda">
+        <PropertyRef Name="idEmisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Deuda_RelacionClienteFinanciera2">
+    <End Role="relacionclientefinanciera" Type="Self.relacionclientefinanciera" Multiplicity="1" />
+    <End Role="deuda" Type="Self.deuda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="relacionclientefinanciera">
+        <PropertyRef Name="idRelacionClienteFinanciera" />
+      </Principal>
+      <Dependent Role="deuda">
+        <PropertyRef Name="idDeudor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Direccion_CodigoPostal1">
+    <End Role="codigopostal" Type="Self.codigopostal" Multiplicity="1" />
+    <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="codigopostal">
+        <PropertyRef Name="idCodigoPostal" />
+      </Principal>
+      <Dependent Role="direccion">
+        <PropertyRef Name="CodigoPostal_idCodigoPostal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Direccion_Colonia1">
+    <End Role="colonia" Type="Self.colonia" Multiplicity="1" />
+    <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="colonia">
+        <PropertyRef Name="idColonia" />
+      </Principal>
+      <Dependent Role="direccion">
+        <PropertyRef Name="Colonia_idColonia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Direccion_Persona1">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="direccion">
+        <PropertyRef Name="Persona_idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estado_Pais1">
+    <End Role="pais" Type="Self.pais" Multiplicity="1" />
+    <End Role="estado" Type="Self.estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="idPais" />
+      </Principal>
+      <Dependent Role="estado">
+        <PropertyRef Name="Pais_idPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Financiera_Persona1">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="financiera" Type="Self.financiera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="financiera">
+        <PropertyRef Name="Persona_idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Historial_Operacion1">
+    <End Role="deuda" Type="Self.deuda" Multiplicity="1" />
+    <End Role="operacion" Type="Self.operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="deuda">
+        <PropertyRef Name="idDeuda" />
+      </Principal>
+      <Dependent Role="operacion">
+        <PropertyRef Name="idDeuda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Municipio_Estado1">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="municipio" Type="Self.municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="municipio">
+        <PropertyRef Name="Estado_idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PlanContratado_Financiera1">
+    <End Role="financiera" Type="Self.financiera" Multiplicity="1" />
+    <End Role="plancontratado" Type="Self.plancontratado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="financiera">
+        <PropertyRef Name="idFinanciera" />
+      </Principal>
+      <Dependent Role="plancontratado">
+        <PropertyRef Name="Financiera_idFinanciera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PlanContratado_PlanConsulta1">
+    <End Role="planconsulta" Type="Self.planconsulta" Multiplicity="1" />
+    <End Role="plancontratado" Type="Self.plancontratado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="planconsulta">
+        <PropertyRef Name="idPlanConsulta" />
+      </Principal>
+      <Dependent Role="plancontratado">
+        <PropertyRef Name="PlanConsulta_idPlanConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RelacionClienteFinanciera_Financiera1">
+    <End Role="financiera" Type="Self.financiera" Multiplicity="1" />
+    <End Role="relacionclientefinanciera" Type="Self.relacionclientefinanciera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="financiera">
+        <PropertyRef Name="idFinanciera" />
+      </Principal>
+      <Dependent Role="relacionclientefinanciera">
+        <PropertyRef Name="Financiera_idFinanciera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RelacionClienteFinanciera_Persona1">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="relacionclientefinanciera" Type="Self.relacionclientefinanciera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="relacionclientefinanciera">
+        <PropertyRef Name="Persona_idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="burofactorModelStoreContainer">
+    <EntitySet Name="codigopostal" EntityType="Self.codigopostal" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="colonia" EntityType="Self.colonia" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="consulta" EntityType="Self.consulta" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="deuda" EntityType="Self.deuda" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="direccion" EntityType="Self.direccion" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="divisa" EntityType="Self.divisa" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="estado" EntityType="Self.estado" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="financiera" EntityType="Self.financiera" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="municipio" EntityType="Self.municipio" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="operacion" EntityType="Self.operacion" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="pais" EntityType="Self.pais" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="planconsulta" EntityType="Self.planconsulta" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="plancontratado" EntityType="Self.plancontratado" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="relacionclientefinanciera" EntityType="Self.relacionclientefinanciera" Schema="burofactor" store:Type="Tables" />
+    <EntitySet Name="codigopostal_has_colonia" EntityType="Self.codigopostal_has_colonia" store:Type="Tables" store:Schema="burofactor">
+      <DefiningQuery>SELECT
+`codigopostal_has_colonia`.`CodigoPostal_idCodigoPostal`, 
+`codigopostal_has_colonia`.`Colonia_idColonia`
+FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_CodigoPostal_has_Colonia_CodigoPostal1" Association="Self.fk_CodigoPostal_has_Colonia_CodigoPostal1">
+      <End Role="codigopostal" EntitySet="codigopostal" />
+      <End Role="codigopostal_has_colonia" EntitySet="codigopostal_has_colonia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CodigoPostal_has_Colonia_Colonia1" Association="Self.fk_CodigoPostal_has_Colonia_Colonia1">
+      <End Role="colonia" EntitySet="colonia" />
+      <End Role="codigopostal_has_colonia" EntitySet="codigopostal_has_colonia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Colonia_Municipio1" Association="Self.fk_Colonia_Municipio1">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="colonia" EntitySet="colonia" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Consulta_PlanContratado1" Association="Self.fk_Consulta_PlanContratado1">
+      <End Role="plancontratado" EntitySet="plancontratado" />
+      <End Role="consulta" EntitySet="consulta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Deuda_Divisa1" Association="Self.fk_Deuda_Divisa1">
+      <End Role="divisa" EntitySet="divisa" />
+      <End Role="deuda" EntitySet="deuda" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Deuda_RelacionClienteFinanciera1" Association="Self.fk_Deuda_RelacionClienteFinanciera1">
+      <End Role="relacionclientefinanciera" EntitySet="relacionclientefinanciera" />
+      <End Role="deuda" EntitySet="deuda" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Deuda_RelacionClienteFinanciera2" Association="Self.fk_Deuda_RelacionClienteFinanciera2">
+      <End Role="relacionclientefinanciera" EntitySet="relacionclientefinanciera" />
+      <End Role="deuda" EntitySet="deuda" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Direccion_CodigoPostal1" Association="Self.fk_Direccion_CodigoPostal1">
+      <End Role="codigopostal" EntitySet="codigopostal" />
+      <End Role="direccion" EntitySet="direccion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Direccion_Colonia1" Association="Self.fk_Direccion_Colonia1">
+      <End Role="colonia" EntitySet="colonia" />
+      <End Role="direccion" EntitySet="direccion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Direccion_Persona1" Association="Self.fk_Direccion_Persona1">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="direccion" EntitySet="direccion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estado_Pais1" Association="Self.fk_Estado_Pais1">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="estado" EntitySet="estado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Financiera_Persona1" Association="Self.fk_Financiera_Persona1">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="financiera" EntitySet="financiera" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Historial_Operacion1" Association="Self.fk_Historial_Operacion1">
+      <End Role="deuda" EntitySet="deuda" />
+      <End Role="operacion" EntitySet="operacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Municipio_Estado1" Association="Self.fk_Municipio_Estado1">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="municipio" EntitySet="municipio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PlanContratado_Financiera1" Association="Self.fk_PlanContratado_Financiera1">
+      <End Role="financiera" EntitySet="financiera" />
+      <End Role="plancontratado" EntitySet="plancontratado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PlanContratado_PlanConsulta1" Association="Self.fk_PlanContratado_PlanConsulta1">
+      <End Role="planconsulta" EntitySet="planconsulta" />
+      <End Role="plancontratado" EntitySet="plancontratado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RelacionClienteFinanciera_Financiera1" Association="Self.fk_RelacionClienteFinanciera_Financiera1">
+      <End Role="financiera" EntitySet="financiera" />
+      <End Role="relacionclientefinanciera" EntitySet="relacionclientefinanciera" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RelacionClienteFinanciera_Persona1" Association="Self.fk_RelacionClienteFinanciera_Persona1">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="relacionclientefinanciera" EntitySet="relacionclientefinanciera" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

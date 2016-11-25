@@ -1,0 +1,10 @@
+F:\codigo\Efactor\trunk\GenericLinq\GenericLinq\bin\Debug\GenericLinq.dll
+F:\codigo\Efactor\trunk\GenericLinq\GenericLinq\bin\Debug\GenericLinq.pdb
+F:\codigo\Efactor\trunk\GenericLinq\GenericLinq\obj\Debug\GenericLinq.csprojResolveAssemblyReference.cache
+F:\codigo\Efactor\trunk\GenericLinq\GenericLinq\obj\Debug\GenericLinq.dll
+F:\codigo\Efactor\trunk\GenericLinq\GenericLinq\obj\Debug\GenericLinq.pdb
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\bin\Debug\GenericLinq.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\bin\Debug\GenericLinq.pdb
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.csprojResolveAssemblyReference.cache
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.pdb

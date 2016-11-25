@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BuroFactor.Models.dao.financiera>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Regulada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.persona.RazonSocial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Regulada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.persona.RazonSocial)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idFinanciera }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idFinanciera }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idFinanciera })
+        </td>
+    </tr>
+}
+
+</table>

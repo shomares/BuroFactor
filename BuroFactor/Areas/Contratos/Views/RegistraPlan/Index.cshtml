@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ristra</h2>
+
+<div ng-controller="RegistroPlanController">
+
+    <div ng-style="diplayFinancieras">
+        <form ng-submit="buscaFinanciera()">
+            <div class="form-group">
+                <label class="control-label col-md-2">RFC</label>
+                <input type="text" ng-model="RFC" />
+            </div>
+            <input type="submit" />Guardar
+        </form>
+        <table class="overflow-y-long">
+            <thead>
+                <tr class="danger">
+                    <th style="text-align:justify;">RFC</th>
+                    <th style="text-align:justify;">Nombre</th>
+                    <th style="text-align:justify;">Editar Planes</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in financieras">
+                    <td style="text-align:justify;">{{c.rfc}}</td>
+                    <td style="text-align:justify;">{{c.razonSocial}}</td>
+                    <td style="text-align:justify;"><a href="" ng-click="cargaPlanes(c.idFinanciera);">Editar</a></td>
+                </tr>
+        </table>
+    </div>
+    <div ng-style="diplayPlanes">
+
+        <p>{{current.financiera.razonSocial}}</p>
+        <table class="overflow-y-long">
+            <thead>
+                <tr class="danger">
+                    <th style="text-align:justify;">Plan</th>
+                    <th style="text-align:justify;">Fecha Contrato</th>
+                    <th style="text-align:justify;">Numero de Consultas al Mes</th>
+                    <th style="text-align:justify;">Cancelar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in planes">
+                    <td style="text-align:justify;">{{c.nombre}}</td>
+                    <td style="text-align:justify;">{{c.fechaContrato}}</td>
+                    <td style="text-align:justify;">{{c.maxConsultaMes}}</td>
+                    <td style="text-align:justify;"><a ng-click="cancelarPlan({{c.id}})">Cancelar</a></td>
+                </tr>
+        </table>
+        <form ng-submit="guardaPlan()">
+            <div class="form-group">
+                <label class="control-label col-md-2">Plan</label>
+                <select id="divisasSelect" ng-model="current.plan" class="align-combo" width:196px"
+                        required>
+                    <option value="">Seleccione un plan</option>
+                    <option ng-repeat="option in todosPlanes" value="{{option.idPlanConsulta}}">{{option.nombre}}</option>
+                </select>
+            </div>
+            <input type="submit" />Guardar
+
+        </form>
+
+
+
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/factory/RegistroPlanFactory.js"></script>
+<script src="~/Scripts/controller/ctrlRegistroPlan.js"></script>
+

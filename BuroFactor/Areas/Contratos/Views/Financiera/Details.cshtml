@@ -1,0 +1,43 @@
+﻿@model BuroFactor.Models.dao.financiera
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>financiera</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Regulada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regulada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.persona.RazonSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.persona.RazonSocial)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idFinanciera }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

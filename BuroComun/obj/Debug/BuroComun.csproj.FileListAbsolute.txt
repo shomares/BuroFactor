@@ -1,0 +1,9 @@
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\BuroComun.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\BuroComun.pdb
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\obj\Debug\BuroComun.csprojResolveAssemblyReference.cache
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\obj\Debug\BuroComun.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\obj\Debug\BuroComun.pdb
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\GenericLinq.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\GenericLinq.pdb
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\DevTrends.WCFDataAnnotations.dll
+C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroComun\bin\Debug\DevTrends.WCFDataAnnotations.pdb

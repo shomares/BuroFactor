@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63298eaefd5f4071aaeec5a2e608a315" Name="Diagram1">
+        <EntityTypeShape EntityType="burofactorModel.codigopostal" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.colonia" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.consulta" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.deuda" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.direccion" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.divisa" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.estado" Width="1.5" PointX="1.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.financiera" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.municipio" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.operacion" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.pais" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.persona" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.planconsulta" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.plancontratado" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="burofactorModel.relacionclientefinanciera" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="burofactorModel.fk_Direccion_CodigoPostal1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Colonia_Municipio1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Direccion_Colonia1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Consulta_PlanContratado1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Deuda_Divisa1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Deuda_RelacionClienteFinanciera1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Deuda_RelacionClienteFinanciera2" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Historial_Operacion1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Direccion_Persona1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Estado_Pais1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Municipio_Estado1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_Financiera_Persona1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_PlanContratado_Financiera1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_RelacionClienteFinanciera_Financiera1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_RelacionClienteFinanciera_Persona1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.fk_PlanContratado_PlanConsulta1" ManuallyRouted="false" />
+        <AssociationConnector Association="burofactorModel.codigopostal_has_colonia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="burofactorModel.usuario" Width="1.5" PointX="5.25" PointY="13.75" />
+        <AssociationConnector Association="burofactorModel.fk_Usuario_Financiera1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
