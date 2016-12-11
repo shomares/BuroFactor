@@ -1,16 +1,16 @@
-﻿@model BuroFactor.Models.dao.financiera
+﻿ @model BuroFactor.Models.dao.financiera
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    
     
     <div class="form-horizontal">
         <h4>Financiera</h4>
@@ -38,7 +38,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.persona.FechaConstitucion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.persona.FechaConstitucion,   htmlAttributes: new { @class = "control-label col-md-2" , type = "time" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.persona.FechaConstitucion, new { htmlAttributes = new { @class = "form-control", disabled= true } })
                 @Html.ValidationMessageFor(model => model.persona.FechaConstitucion, "", new { @class = "text-danger" })
@@ -78,7 +78,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
 
 @section Scripts {

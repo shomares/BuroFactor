@@ -49,6 +49,8 @@
     <NavigationProperty Name="relacionclientefinanciera" Relationship="Self.fk_Deuda_RelacionClienteFinanciera1" FromRole="deuda" ToRole="relacionclientefinanciera" />
     <NavigationProperty Name="relacionclientefinanciera1" Relationship="Self.fk_Deuda_RelacionClienteFinanciera2" FromRole="deuda" ToRole="relacionclientefinanciera" />
     <NavigationProperty Name="operacion" Relationship="Self.fk_Historial_Operacion1" FromRole="deuda" ToRole="operacion" />
+    <Property Name="Financiera_idFinanciera" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="financiera" Relationship="burofactorModel.fk_Deuda_Financiera1" FromRole="deuda" ToRole="financiera" />
   </EntityType>
   <EntityType Name="direccion">
     <Key>
@@ -96,6 +98,7 @@
     <Property Name="Activa" Type="Boolean" Nullable="false" />
     <Property Name="Correo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="usuario" Relationship="burofactorModel.fk_Usuario_Financiera1" FromRole="financiera" ToRole="usuario" />
+    <NavigationProperty Name="deuda" Relationship="burofactorModel.fk_Deuda_Financiera1" FromRole="financiera" ToRole="deuda" />
   </EntityType>
   <EntityType Name="municipio">
     <Key>
@@ -160,7 +163,7 @@
     <Property Name="FechaContrato" Type="DateTime" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <Property Name="ContrasenaWS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UsuarioWS" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UsuarioWS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="consulta" Relationship="Self.fk_Consulta_PlanContratado1" FromRole="plancontratado" ToRole="consulta" />
     <NavigationProperty Name="financiera" Relationship="Self.fk_PlanContratado_Financiera1" FromRole="plancontratado" ToRole="financiera" />
     <NavigationProperty Name="planconsulta" Relationship="Self.fk_PlanContratado_PlanConsulta1" FromRole="plancontratado" ToRole="planconsulta" />
@@ -466,6 +469,10 @@
       <End Role="financiera" EntitySet="financiera" />
       <End Role="usuario" EntitySet="usuario" />
     </AssociationSet>
+    <AssociationSet Name="fk_Deuda_Financiera1" Association="burofactorModel.fk_Deuda_Financiera1">
+      <End Role="financiera" EntitySet="financiera" />
+      <End Role="deuda" EntitySet="deuda" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="usuario">
     <Key>
@@ -488,6 +495,18 @@
         <PropertyRef Name="idFinanciera" />
       </Principal>
       <Dependent Role="usuario">
+        <PropertyRef Name="Financiera_idFinanciera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Deuda_Financiera1">
+    <End Type="burofactorModel.financiera" Role="financiera" Multiplicity="1" />
+    <End Type="burofactorModel.deuda" Role="deuda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="financiera">
+        <PropertyRef Name="idFinanciera" />
+      </Principal>
+      <Dependent Role="deuda">
         <PropertyRef Name="Financiera_idFinanciera" />
       </Dependent>
     </ReferentialConstraint>

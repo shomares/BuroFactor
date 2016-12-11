@@ -20,6 +20,8 @@
     });
 
     $scope.validateToken = function () {
+        $scope.diplayLoad = { 'display': 'block' };
+
         if ($scope.data.contrasena === $scope.data.validacionContrasena)
             ValidationTokenFactory.validateToken($scope.data);
         else

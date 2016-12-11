@@ -15,18 +15,21 @@ namespace BuroFactor.BuroService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientesResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ClientesResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private bool ErrorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private BuroFactor.BuroService.ErroresClientesResponse[] ErroresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +42,842 @@ namespace BuroFactor.BuroService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public bool Error {
             get {
-                return this.BoolValueField;
+                return this.ErrorField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((this.ErrorField.Equals(value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public BuroFactor.BuroService.ErroresClientesResponse[] Errores {
             get {
-                return this.StringValueField;
+                return this.ErroresField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.ErroresField, value) != true)) {
+                    this.ErroresField = value;
+                    this.RaisePropertyChanged("Errores");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Token {
+            get {
+                return this.TokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ErroresClientesResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class ErroresClientesResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroComun.src.model.cargas.ClienteCarga ClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroComun.src.model.cargas.ClienteCarga Cliente {
+            get {
+                return this.ClienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClienteField, value) != true)) {
+                    this.ClienteField = value;
+                    this.RaisePropertyChanged("Cliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorField, value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BuroResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class BuroResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaConstitucionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RazonSocialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroFactor.BuroService.RelacionFinancieraResponse[] RelacionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaConstitucion {
+            get {
+                return this.FechaConstitucionField;
+            }
+            set {
+                if ((this.FechaConstitucionField.Equals(value) != true)) {
+                    this.FechaConstitucionField = value;
+                    this.RaisePropertyChanged("FechaConstitucion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RazonSocial {
+            get {
+                return this.RazonSocialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RazonSocialField, value) != true)) {
+                    this.RazonSocialField = value;
+                    this.RaisePropertyChanged("RazonSocial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroFactor.BuroService.RelacionFinancieraResponse[] Relacion {
+            get {
+                return this.RelacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RelacionField, value) != true)) {
+                    this.RelacionField = value;
+                    this.RaisePropertyChanged("Relacion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RelacionFinancieraResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class RelacionFinancieraResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroFactor.BuroService.FinancieraBuroResponse FinancieraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroFactor.BuroService.OperacionesResponse[] OperacionesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroFactor.BuroService.FinancieraBuroResponse Financiera {
+            get {
+                return this.FinancieraField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FinancieraField, value) != true)) {
+                    this.FinancieraField = value;
+                    this.RaisePropertyChanged("Financiera");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroFactor.BuroService.OperacionesResponse[] Operaciones {
+            get {
+                return this.OperacionesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperacionesField, value) != true)) {
+                    this.OperacionesField = value;
+                    this.RaisePropertyChanged("Operaciones");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FinancieraBuroResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class FinancieraBuroResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaConstitucionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RazonSocialField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaConstitucion {
+            get {
+                return this.FechaConstitucionField;
+            }
+            set {
+                if ((this.FechaConstitucionField.Equals(value) != true)) {
+                    this.FechaConstitucionField = value;
+                    this.RaisePropertyChanged("FechaConstitucion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RazonSocial {
+            get {
+                return this.RazonSocialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RazonSocialField, value) != true)) {
+                    this.RazonSocialField = value;
+                    this.RaisePropertyChanged("RazonSocial");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OperacionesResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class OperacionesResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DivisaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaEmisionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaVencimientoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FolioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroFactor.BuroService.HistorialOperacionResponse[] HistorialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal MontoFinanciadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal MontoNominalField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Divisa {
+            get {
+                return this.DivisaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DivisaField, value) != true)) {
+                    this.DivisaField = value;
+                    this.RaisePropertyChanged("Divisa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaEmision {
+            get {
+                return this.FechaEmisionField;
+            }
+            set {
+                if ((this.FechaEmisionField.Equals(value) != true)) {
+                    this.FechaEmisionField = value;
+                    this.RaisePropertyChanged("FechaEmision");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaVencimiento {
+            get {
+                return this.FechaVencimientoField;
+            }
+            set {
+                if ((this.FechaVencimientoField.Equals(value) != true)) {
+                    this.FechaVencimientoField = value;
+                    this.RaisePropertyChanged("FechaVencimiento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Folio {
+            get {
+                return this.FolioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
+                    this.FolioField = value;
+                    this.RaisePropertyChanged("Folio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroFactor.BuroService.HistorialOperacionResponse[] Historial {
+            get {
+                return this.HistorialField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistorialField, value) != true)) {
+                    this.HistorialField = value;
+                    this.RaisePropertyChanged("Historial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal MontoFinanciado {
+            get {
+                return this.MontoFinanciadoField;
+            }
+            set {
+                if ((this.MontoFinanciadoField.Equals(value) != true)) {
+                    this.MontoFinanciadoField = value;
+                    this.RaisePropertyChanged("MontoFinanciado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal MontoNominal {
+            get {
+                return this.MontoNominalField;
+            }
+            set {
+                if ((this.MontoNominalField.Equals(value) != true)) {
+                    this.MontoNominalField = value;
+                    this.RaisePropertyChanged("MontoNominal");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HistorialOperacionResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class HistorialOperacionResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Fecha {
+            get {
+                return this.FechaField;
+            }
+            set {
+                if ((this.FechaField.Equals(value) != true)) {
+                    this.FechaField = value;
+                    this.RaisePropertyChanged("Fecha");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CambiaClienteRequest", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class CambiaClienteRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AliasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RFCField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Alias {
+            get {
+                return this.AliasField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AliasField, value) != true)) {
+                    this.AliasField = value;
+                    this.RaisePropertyChanged("Alias");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RFC {
+            get {
+                return this.RFCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RFCField, value) != true)) {
+                    this.RFCField = value;
+                    this.RaisePropertyChanged("RFC");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OperacionResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class OperacionResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroFactor.BuroService.ErroresOperacionResponse[] ErroresField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((this.ErrorField.Equals(value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroFactor.BuroService.ErroresOperacionResponse[] Errores {
+            get {
+                return this.ErroresField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErroresField, value) != true)) {
+                    this.ErroresField = value;
+                    this.RaisePropertyChanged("Errores");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Token {
+            get {
+                return this.TokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ErroresOperacionResponse", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class ErroresOperacionResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BuroComun.src.model.cargas.OperacionCarga OperacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isRiesgoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorField, value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BuroComun.src.model.cargas.OperacionCarga Operacion {
+            get {
+                return this.OperacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperacionField, value) != true)) {
+                    this.OperacionField = value;
+                    this.RaisePropertyChanged("Operacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isRiesgo {
+            get {
+                return this.isRiesgoField;
+            }
+            set {
+                if ((this.isRiesgoField.Equals(value) != true)) {
+                    this.isRiesgoField = value;
+                    this.RaisePropertyChanged("isRiesgo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CambiaEstadoOperacionRequest", Namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response")]
+    [System.SerializableAttribute()]
+    public partial class CambiaEstadoOperacionRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FolioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdEmisorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Folio {
+            get {
+                return this.FolioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FolioField, value) != true)) {
+                    this.FolioField = value;
+                    this.RaisePropertyChanged("Folio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IdEmisor {
+            get {
+                return this.IdEmisorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdEmisorField, value) != true)) {
+                    this.IdEmisorField = value;
+                    this.RaisePropertyChanged("IdEmisor");
                 }
             }
         }
@@ -84,11 +902,47 @@ namespace BuroFactor.BuroService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/GetData", ReplyAction="http://tempuri.org/IBuroFactorService/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBuroFactorService/GetDataUsingDataContractResponse")]
-        BuroFactor.BuroService.CompositeType GetDataUsingDataContract(BuroFactor.BuroService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ValidaClientes", ReplyAction="http://tempuri.org/IBuroFactorService/ValidaClientesResponse")]
+        BuroFactor.BuroService.ClientesResponse ValidaClientes(BuroComun.src.model.cargas.ClienteCarga[] lista);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IBuroFactorService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<BuroFactor.BuroService.CompositeType> GetDataUsingDataContractAsync(BuroFactor.BuroService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ValidaClientes", ReplyAction="http://tempuri.org/IBuroFactorService/ValidaClientesResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> ValidaClientesAsync(BuroComun.src.model.cargas.ClienteCarga[] lista);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/RegistraClientes", ReplyAction="http://tempuri.org/IBuroFactorService/RegistraClientesResponse")]
+        BuroFactor.BuroService.ClientesResponse RegistraClientes(string ticket);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/RegistraClientes", ReplyAction="http://tempuri.org/IBuroFactorService/RegistraClientesResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> RegistraClientesAsync(string ticket);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ConsultaBuro", ReplyAction="http://tempuri.org/IBuroFactorService/ConsultaBuroResponse")]
+        BuroFactor.BuroService.BuroResponse ConsultaBuro(string RFC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ConsultaBuro", ReplyAction="http://tempuri.org/IBuroFactorService/ConsultaBuroResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.BuroResponse> ConsultaBuroAsync(string RFC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/EditaCliente", ReplyAction="http://tempuri.org/IBuroFactorService/EditaClienteResponse")]
+        BuroFactor.BuroService.ClientesResponse EditaCliente(BuroFactor.BuroService.CambiaClienteRequest editar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/EditaCliente", ReplyAction="http://tempuri.org/IBuroFactorService/EditaClienteResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> EditaClienteAsync(BuroFactor.BuroService.CambiaClienteRequest editar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ValidaOperaciones", ReplyAction="http://tempuri.org/IBuroFactorService/ValidaOperacionesResponse")]
+        BuroFactor.BuroService.OperacionResponse ValidaOperaciones(BuroComun.src.model.cargas.OperacionCarga[] lista);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/ValidaOperaciones", ReplyAction="http://tempuri.org/IBuroFactorService/ValidaOperacionesResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> ValidaOperacionesAsync(BuroComun.src.model.cargas.OperacionCarga[] lista);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/RegistraOperaciones", ReplyAction="http://tempuri.org/IBuroFactorService/RegistraOperacionesResponse")]
+        BuroFactor.BuroService.OperacionResponse RegistraOperaciones(string ticket);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/RegistraOperaciones", ReplyAction="http://tempuri.org/IBuroFactorService/RegistraOperacionesResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> RegistraOperacionesAsync(string ticket);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/CambiaEstado", ReplyAction="http://tempuri.org/IBuroFactorService/CambiaEstadoResponse")]
+        BuroFactor.BuroService.OperacionResponse CambiaEstado(BuroFactor.BuroService.CambiaEstadoOperacionRequest[] estados);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBuroFactorService/CambiaEstado", ReplyAction="http://tempuri.org/IBuroFactorService/CambiaEstadoResponse")]
+        System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> CambiaEstadoAsync(BuroFactor.BuroService.CambiaEstadoOperacionRequest[] estados);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -126,12 +980,60 @@ namespace BuroFactor.BuroService {
             return base.Channel.GetDataAsync(value);
         }
         
-        public BuroFactor.BuroService.CompositeType GetDataUsingDataContract(BuroFactor.BuroService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public BuroFactor.BuroService.ClientesResponse ValidaClientes(BuroComun.src.model.cargas.ClienteCarga[] lista) {
+            return base.Channel.ValidaClientes(lista);
         }
         
-        public System.Threading.Tasks.Task<BuroFactor.BuroService.CompositeType> GetDataUsingDataContractAsync(BuroFactor.BuroService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> ValidaClientesAsync(BuroComun.src.model.cargas.ClienteCarga[] lista) {
+            return base.Channel.ValidaClientesAsync(lista);
+        }
+        
+        public BuroFactor.BuroService.ClientesResponse RegistraClientes(string ticket) {
+            return base.Channel.RegistraClientes(ticket);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> RegistraClientesAsync(string ticket) {
+            return base.Channel.RegistraClientesAsync(ticket);
+        }
+        
+        public BuroFactor.BuroService.BuroResponse ConsultaBuro(string RFC) {
+            return base.Channel.ConsultaBuro(RFC);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.BuroResponse> ConsultaBuroAsync(string RFC) {
+            return base.Channel.ConsultaBuroAsync(RFC);
+        }
+        
+        public BuroFactor.BuroService.ClientesResponse EditaCliente(BuroFactor.BuroService.CambiaClienteRequest editar) {
+            return base.Channel.EditaCliente(editar);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.ClientesResponse> EditaClienteAsync(BuroFactor.BuroService.CambiaClienteRequest editar) {
+            return base.Channel.EditaClienteAsync(editar);
+        }
+        
+        public BuroFactor.BuroService.OperacionResponse ValidaOperaciones(BuroComun.src.model.cargas.OperacionCarga[] lista) {
+            return base.Channel.ValidaOperaciones(lista);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> ValidaOperacionesAsync(BuroComun.src.model.cargas.OperacionCarga[] lista) {
+            return base.Channel.ValidaOperacionesAsync(lista);
+        }
+        
+        public BuroFactor.BuroService.OperacionResponse RegistraOperaciones(string ticket) {
+            return base.Channel.RegistraOperaciones(ticket);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> RegistraOperacionesAsync(string ticket) {
+            return base.Channel.RegistraOperacionesAsync(ticket);
+        }
+        
+        public BuroFactor.BuroService.OperacionResponse CambiaEstado(BuroFactor.BuroService.CambiaEstadoOperacionRequest[] estados) {
+            return base.Channel.CambiaEstado(estados);
+        }
+        
+        public System.Threading.Tasks.Task<BuroFactor.BuroService.OperacionResponse> CambiaEstadoAsync(BuroFactor.BuroService.CambiaEstadoOperacionRequest[] estados) {
+            return base.Channel.CambiaEstadoAsync(estados);
         }
     }
 }

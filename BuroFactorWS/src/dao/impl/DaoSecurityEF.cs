@@ -14,6 +14,8 @@ namespace BuroFactorWS.src.dao.impl
 
         public IGeneraContrasena Generador { get; set; }
 
+        private IEncripta Encripta { get; set; }
+
         public plancontratado getPlan(string userName)
         {
             plancontratado salida = null;
@@ -36,16 +38,20 @@ namespace BuroFactorWS.src.dao.impl
         {
 
             plancontratado salida = null;
+            string auxpass = Encripta.Decrypt(password);
+
             using (var factorEntity = Factory.Create())
             {
                 salida = (from aux in factorEntity.plancontratado.Include(p => p.planconsulta)
                           where aux.UsuarioWS == userName && aux.Activo == true
                           select aux).FirstOrDefault();
 
-                if (salida != null && !String.IsNullOrEmpty(password))
-                    password = Generador.generaPassword(salida.SalWS, password);
+
+
+                if (auxpass == salida.UsuarioWS)
+                    password = salida?.ContrasenaWS;
                 else
-                    password = salida.ContrasenaWS;
+                    password = Generador.generaPassword(salida?.SalWS, password);
             }
             return salida != null && salida.planconsulta.FechaVencimiento > DateTime.Now && salida.ContrasenaWS == password;
         }

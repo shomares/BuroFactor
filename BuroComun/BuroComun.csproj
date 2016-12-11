@@ -48,12 +48,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\model\cargas\ClienteCarga.cs" />
+    <Compile Include="src\model\cargas\OperacionCarga.cs" />
     <Compile Include="src\security\IEncripta.cs" />
     <Compile Include="src\security\IGenerador.cs" />
     <Compile Include="src\security\impl\Encripta.cs" />
     <Compile Include="src\security\impl\GeneraContrasena.cs" />
     <Compile Include="src\security\impl\SerializeBinario.cs" />
     <Compile Include="src\security\ISerialize.cs" />
+    <Compile Include="src\validator\ValidadorOperacion.cs" />
     <Compile Include="src\validator\ValidadotCargaClientes.cs" />
   </ItemGroup>
   <ItemGroup>

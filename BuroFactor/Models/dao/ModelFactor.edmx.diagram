@@ -39,6 +39,7 @@
         <AssociationConnector Association="burofactorModel.codigopostal_has_colonia" ManuallyRouted="false" />
         <EntityTypeShape EntityType="burofactorModel.usuario" Width="1.5" PointX="5.25" PointY="13.75" />
         <AssociationConnector Association="burofactorModel.fk_Usuario_Financiera1" />
+        <AssociationConnector Association="burofactorModel.fk_Deuda_Financiera1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

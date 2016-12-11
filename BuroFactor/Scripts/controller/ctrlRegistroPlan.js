@@ -13,8 +13,7 @@
         $scope.diplayFinancieras = { 'display': 'block' };
         $scope.diplayLoad = { 'display': 'none' };
         alert(args);
-        if (func !== undefined)
-            func();
+       
     });
 
     RegistroPlanFactory.addManejadorEventos("onBuscaFinanciera", function (args, func) {
@@ -38,8 +37,9 @@
 
 
     RegistroPlanFactory.addManejadorEventos("onSavePlanFinanciera", function (args, func) {
-        alert(args);
-        RegistroPlanFactory.cargaFinancieraPlan();
+        alertify.alert('Se ha enviado un correo para poder activar el plan', function () {
+            window.location.reload();
+        });
 
     });
 

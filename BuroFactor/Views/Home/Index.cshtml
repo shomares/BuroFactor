@@ -1,24 +1,92 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+﻿
+
+@{
+
+    Layout = null;
+}
+
+@functions{
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Parallax Template - Materialize</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/loading.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/alertify/alertify.default.css" rel="stylesheet" media="screen,projection" />
+
+    <script src="~/Scripts/libs/angular.js"></script>
+    <script src="~/Scripts/libs/angular-file-upload.min.js"></script>
+    <script src="~/Scripts/libs/ui-bootstrap.js"></script>
+    <script src="~/Scripts/libs/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/controller/Rootapp.js"></script>
+    <script src="~/Scripts/libs/Eventos.js"></script>
+    <script src="~/Scripts/alertify/alertify.min.js"></script>
+    <script src="~/Home/RootPath"></script>
+</head>
+<body ng-app="BuroFactor" ng-controller="LoginController">
+    <div class="section">
+        <!--   Icon Section   -->
+        <div class="form-signin col s12 m4 l8">
+            <form id="loginform" class="form-horizontal" role="form" ng-submit="send();" autocomplete="off">
+                <div class="center-login">
+
+                    <div><h4>Buro Factor</h4></div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="username" placeholder="username" ng-model="username" required>
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password" ng-model="password" required>
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@GetAntiForgeryToken()'">
+                    </div>
+
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <input type="submit" class="btn btn-success" value="Iniciar Sesión" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="p-a" ng-style="displayLoading">
+                <div id="cover" class="cover">
+                </div>
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <!--  Scripts-->
+    <script src="~/Scripts/Factory/LoginLogic.js"></script>
+    <script src="~/Scripts/Controller/LoginController.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/libs/materialize.js"></script>
+    <script src="~/Scripts/libs/init.js"></script>
+</body>
+</html>

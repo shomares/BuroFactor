@@ -14,155 +14,198 @@ namespace BuroFactorWS.src.bussines
     public class RutinaCliente : IRutinaCliente
     {
 
-        public IDaoBuro DaoBuro { get; set; }
+        public IDaoBuro DaoBuroProvider { get; set; }
         public IValidaEntrada<ClienteCarga> Validador { get; set; }
         public ISerialize Serialize { get; set; }
 
         public ClientesResponse ValidaClientes(List<ClienteCarga> lista, String user)
         {
             IValidaEntrada<ClienteCarga> validadorS = Validador.clone();
-
-            validadorS.errores = new List<Errores<ClienteCarga>>();
             ClientesResponse salida = new ClientesResponse();
-            DaoBuro.beginTrasaction();
-            financiera financiera = DaoBuro.getFinancieraPorContratoWS(user);
-
-            try
+            using (IDaoBuro DaoBuro = DaoBuroProvider.createContext())
             {
 
-                if (user != null)
+                validadorS.errores = new List<Errores<ClienteCarga>>();
+                DaoBuro.beginTrasaction();
+
+                try
                 {
-                    validadorS.validaEntrada(lista);
-                    if (validadorS.errores.Count == 0)
+                    financiera financiera = DaoBuro.getFinancieraPorContratoWS(user);
+
+                    if (financiera != null)
                     {
-                        foreach (var elemento in lista)
+                        validadorS.validaEntrada(lista);
+                        if (validadorS.errores.Count == 0)
                         {
-                            relacionclientefinanciera relacion = DaoBuro.getRelacion(elemento.rfc,elemento.idInterno, financiera);
-                            if (relacion != null)
+                            foreach (var elemento in lista)
                             {
-                                salida.Errores.Add(new ErroresClientesResponse()
+                                relacionclientefinanciera relacion = DaoBuro.getRelacion(elemento.rfc, elemento.idInterno, financiera);
+                                if (relacion != null)
                                 {
-                                    Cliente = elemento,
-                                    Error = "El cliente ya fue registrado con la financiera"
-                                });
-                            }
-                            if(DaoBuro.validaInterno(elemento.idInterno, financiera))
-                            {
-                                salida.Errores.Add(new ErroresClientesResponse()
+                                    salida.Errores.Add(new ErroresClientesResponse()
+                                    {
+                                        Cliente = elemento,
+                                        Error = "El cliente ya fue registrado con la financiera"
+                                    });
+                                }
+                                if (DaoBuro.validaInterno(elemento.idInterno, financiera))
                                 {
-                                    Cliente = elemento,
-                                    Error = "El cliente ya registro el identificador"
-                                });
+                                    salida.Errores.Add(new ErroresClientesResponse()
+                                    {
+                                        Cliente = elemento,
+                                        Error = "El cliente ya registro el identificador"
+                                    });
+                                }
+                                if (DaoBuro.validaRelacion(elemento.rfc, financiera)) {
+                                    salida.Errores.Add(new ErroresClientesResponse()
+                                    {
+                                        Cliente = elemento,
+                                        Error = "El cliente ya tiene una relacion con la financiera"
+                                    });
+                                }
                             }
                         }
+                        else
+                        {
+                            foreach (var elemento in validadorS.errores)
+                            {
+                                salida.Errores.Add(new ErroresClientesResponse()
+                                {
+                                    Cliente = elemento.objeto,
+                                    Error = elemento.notficacion
+                                });
+
+                            }
+                            DaoBuro.commitTrasaction();
+
+                        }
+
+                    }
+                    if (salida.Errores.Count == 0)
+                    {
+                        ticket Ticket = new ticket()
+                        {
+                            Fecha = DateTime.Now,
+                            PlanContratado_idPlanContratado = (from aux in financiera.plancontratado
+                                                               where aux.FechaContrato < DateTime.Now &&
+                                                               aux.Activo && aux.planconsulta.FechaVencimiento > DateTime.Now
+                                                               select aux).FirstOrDefault().idPlanContratado,
+                            Data = Serialize.Serialize(lista),
+                            Serial = Guid.NewGuid().ToString()
+
+                        };
+                        DaoBuro.registraTicket(Ticket);
+                        salida.Token = Ticket.Serial;
                     }
                     else
-                    {
-                        foreach (var elemento in validadorS.errores)
-                        {
-                            salida.Errores.Add(new ErroresClientesResponse()
-                            {
-                                Cliente = elemento.objeto,
-                                Error = elemento.notficacion
-                            });
+                        salida.Error = true;
 
-                        }
-
-                    }
-
+                    DaoBuro.commitTrasaction();
                 }
-                if (salida.Errores.Count == 0)
+                catch (Exception)
                 {
-                    ticket Ticket = new ticket()
-                    {
-                        Fecha = DateTime.Now,
-                        PlanContratado_idPlanContratado = (from aux in financiera.plancontratado
-                                                           where aux.FechaContrato < DateTime.Now &&
-                                                           aux.Activo && aux.planconsulta.FechaVencimiento > DateTime.Now
-                                                           select aux).FirstOrDefault().idPlanContratado,
-                        Data = Serialize.Serialize(lista),
-                        Serial = Guid.NewGuid().ToString()
-
-                    };
-                    DaoBuro.registraTicket(Ticket);
-                    salida.Token = Ticket.Serial;
+                    DaoBuro.rollback();
+                    throw;
                 }
-
-                DaoBuro.commitTrasaction();
-            }
-            catch (Exception)
-            {
-                DaoBuro.rollback();
-                throw;
-            }
-            finally {
-                validadorS.Dispose();
+                finally
+                {
+                    validadorS.Dispose();
+                }
             }
             return salida;
         }
 
         public ClientesResponse RegistraCliente(String ticket, String user)
         {
-            DaoBuro.beginTrasaction();
-            ticket Ticket = DaoBuro.getTicket(ticket);
-            List<ClienteCarga> lista;
+
             ClientesResponse salida = new ClientesResponse();
-
-
-            if (Ticket != null && Ticket.plancontratado.UsuarioWS.Equals(user))
+            using (IDaoBuro DaoBuro = DaoBuroProvider.createContext())
             {
-                if ((DateTime.Now - Ticket.Fecha).Minutes < 10)
+                DaoBuro.beginTrasaction();
+                ticket Ticket = DaoBuro.getTicket(ticket);
+                List<ClienteCarga> lista;
+                if (Ticket != null && Ticket.plancontratado.UsuarioWS.Equals(user))
                 {
-                    lista = (List<ClienteCarga>)Serialize.Derialize(Ticket.Data);
-
-                    if (lista != null)
+                    if ((DateTime.Now - Ticket.Fecha).Minutes < 10)
                     {
+                        lista = (List<ClienteCarga>)Serialize.Derialize(Ticket.Data);
 
+                        if (lista != null)
+                        {
+
+                            try
+                            {
+                                foreach (var elemento in lista)
+                                    DaoBuro.registraCliente(elemento, Ticket.plancontratado.financiera);
+
+                                DaoBuro.borraTicket(Ticket);
+                                DaoBuro.commitTrasaction();
+                                salida.Error = false;
+                            }
+                            catch (Exception)
+                            {
+                                DaoBuro.rollback();
+                                throw;
+                            }
+
+
+                        }
+                        else
+                        {
+                            throw new Exception("Error de serializacion");
+                        }
+                    }
+                    else
+                    {
                         try
                         {
-                            foreach (var elemento in lista)
-                                DaoBuro.registraCliente(elemento, Ticket.plancontratado.financiera);
-
                             DaoBuro.borraTicket(Ticket);
                             DaoBuro.commitTrasaction();
-                            salida.Error = false;
+                            throw new Exception("Ticket Expirado");
                         }
                         catch (Exception)
                         {
                             DaoBuro.rollback();
                             throw;
                         }
-
-
-                    }
-                    else
-                    {
-                        throw new Exception("Error de serializacion");
                     }
                 }
                 else
                 {
-                    try
-                    {
-                        DaoBuro.borraTicket(Ticket);
-                        DaoBuro.commitTrasaction();
-                        throw new Exception("Ticket Expirado");
-                    }
-                    catch (Exception)
-                    {
-                        DaoBuro.rollback();
-                        throw;
-                    }
+                    throw new Exception("Prohibido");
                 }
-            }
-            else
-            {
-                throw new Exception("Prohibido");
             }
             return salida;
         }
 
-
-
+        public ClientesResponse EditaCliente(CambiaClienteRequest editar, string user)
+        {
+            ClientesResponse salida = new ClientesResponse();
+            using (IDaoBuro DaoBuro = DaoBuroProvider.createContext())
+            {
+                DaoBuro.beginTrasaction();
+                try
+                {
+                    financiera financiera = DaoBuro.getFinancieraPorContratoWS(user);
+                    if (financiera != null)
+                    {
+                        relacionclientefinanciera cliente = DaoBuro.getCliente(editar.RFC, financiera);
+                        if (cliente != null)
+                        {
+                            cliente.CorreoContacto = editar.Email;
+                            cliente.Alias = editar.Alias;
+                            DaoBuro.commitTrasaction();
+                            salida.Error = false;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    DaoBuro.rollback();
+                    throw;
+                }
+            }
+            return salida;
+        }
     }
 }

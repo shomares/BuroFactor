@@ -29,7 +29,7 @@ RegistroPlanService.prototype.buscaFinanciera = function (rfc) {
                     });
                 } else
                     root.onError.onEvent(args, function () {
-                        window.location.reload();
+                        //window.location.reload();
                     });
             });
     } else {

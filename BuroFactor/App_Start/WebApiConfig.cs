@@ -9,6 +9,8 @@ namespace BuroFactor
 {
     public static class WebApiConfig
     {
+        public static string UrlPrefixRelative { get { return "~/api"; } }
+
         public static void Register(HttpConfiguration config)
         {
 
@@ -25,9 +27,24 @@ namespace BuroFactor
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+             name: "Reporte",
+             routeTemplate: "api/Reporte/{controller}/{action}");
+
+
             config.Routes.MapHttpRoute(
                name: "Contratos",
                routeTemplate: "api/Contratos/{controller}/{action}");
+            config.Routes.MapHttpRoute(
+             name: "Operacion",
+             routeTemplate: "api/Operacion/{controller}/{action}");
+
+            config.Routes.MapHttpRoute(
+           name: "Principal",
+           routeTemplate: "api/Principal/{controller}/{action}");
+
+
         }
     }
 }

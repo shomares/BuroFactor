@@ -40,6 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevTrends.WCFDataAnnotations, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WCFDataAnnotations.1.1.0\lib\net40\DevTrends.WCFDataAnnotations.dll</HintPath>
       <Private>True</Private>
@@ -175,7 +183,11 @@
       <DependentUpon>ModelBuro.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\bussines\INotificaRiesgo.cs" />
+    <Compile Include="src\bussines\impl\NotificaCrystal.cs" />
+    <Compile Include="src\bussines\IRutinaOperacion.cs" />
     <Compile Include="src\bussines\impl\RutinaCliente.cs" />
+    <Compile Include="src\bussines\impl\RutinaOperacion.cs" />
     <Compile Include="src\bussines\IRutinaCliente.cs" />
     <Compile Include="src\dao\FactoryBuro.cs" />
     <Compile Include="src\dao\IBuroFactory.cs" />
@@ -183,6 +195,9 @@
     <Compile Include="src\dao\IDaoSecurity.cs" />
     <Compile Include="src\dao\impl\DaoBuroEF.cs" />
     <Compile Include="src\dao\impl\DaoSecurityEF.cs" />
+    <Compile Include="src\extension\ExceptionMessage.cs" />
+    <Compile Include="src\model\FinancieraRiesgo.cs" />
+    <Compile Include="src\model\UnexpectedServiceFault.cs" />
     <Compile Include="src\response\ResponseValidaCliente.cs" />
     <Compile Include="src\security\impl\ValidateCredentialSql.cs" />
     <Compile Include="src\security\IValidateCredentials.cs" />

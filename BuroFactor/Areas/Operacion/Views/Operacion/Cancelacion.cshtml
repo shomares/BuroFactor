@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Cancelacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="CancelarController">
+    <div id="control">
+        <div ng-style="displayInicio">
+            <div class="izquierda">
+                <h1 class="title">Cancelar Operaciones</h1>
+            </div>
+            <blockquote class="small-blockqoute">Especifique los filtros de b&uacute;squeda</blockquote>
+            <div class="row">
+                <form ng-submit="buscarFacturas()">
+                    <div class="col-md-6" style="padding-bottom:10px">
+                        <div>
+                            <label>Emisor:</label>
+                            <select id="emisorSelect" class="form-control" ng-model="empresa" ng-disabled="todosEmisores" ng-required="!todosEmisores">
+                                <option value="">Seleccione un emisor</option>
+                                <option ng-repeat="option in empresas" value="{{option.id}}">{{option.nombre}}</option>
+                            </select>
+                            <div class="align-text">
+                                <input type="checkbox" style="width:20px; margin-top:5px" value="Todas" class="form-control" ng-model="todosEmisores" ng-change="borraSeleccionEmisor()" id="todosEmisores" />
+                                <label for="todosEmisores" style="margin-top:5px;">Todas los emisores.</label>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div style="margin-top: -15px">
+                                <label>
+                                    Divisa:
+                                </label>
+                                <select id="divisasSelect" ng-model="divisa" class="form-control"
+                                        ng-required="todasDivisas" ng-disabled="todasDivisas" required>
+                                    <option value="">Seleccione una divisa</option>
+                                    <option ng-repeat="option in divisas" value="{{option.id}}">{{option.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <table>
+                                <tr>
+                                    <td><label>Fecha Publicaci&oacute;n Inicial:</label></td>
+                                    <td><input id="FechaInicial" type="date" class="form-control" ng-model="FechaInicial" datepickerie max="9999-12-31" min="1800-01-01" /></td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr>
+                                    <td><label>Fecha Publicaci&oacute;n Final:</label></td>
+                                    <td><input id="FechaFinal" type="date" class="form-control" ng-model="FechaFinal" datepickerie max="9999-12-31" min="1800-01-01" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="width:100%; text-align:right; height:0px;  margin-top:5px; padding-right:150px; margin-bottom:13px;">
+                        <input type="submit" class="btn btn-primary" value="Consultar" style="margin-top:10px; margin-left: 196px" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div ng-style="displayTable">
+            <div style="width:100%; text-align:left; height:0px;margin-top:15px; padding-right:15px; margin-bottom:35px">
+                <input type="checkbox" value="Todas" ng-model="seleccionarTodos" ng-change="seleccionarTodo()" ng-disabled="!lista.length" id="seleccionarTodos" />
+                <label for="seleccionarTodos"> Seleccionar todos.</label>
+            </div>
+            <div id="Busqueda" class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Seleccionar</th>
+                            <th>Documento</th>
+                            <th>Monto</th>
+                            <th>Fecha de Publicaci&oacute;n</th>
+                            <th>Fecha de Emisi&oacute;n</th>
+                            <th>Fecha Programada de pago</th>
+                            <th>Divisa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="factura in lista">
+                            <td>
+                                <input id="{{factura.id}}" type="checkbox" class="filled-in" ng-model="factura.selected" ng-change="notAll()" />
+                                <label for="{{factura.id}}"></label>
+                            </td>
+                            <td>{{factura.folio}}</td>
+                            <td>{{factura.montoFinanciado|number:2}}</td>
+                            <td>{{factura.fechaPublicacion| date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                            <td>{{factura.fechaEmision| date:'dd/MM/yyyy '}}</td>
+                            <td>{{factura.fechaVencimiento| date:'dd/MM/yyyy '}}</td>
+                            <td>{{factura.divisa}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="izquierda" ng-style="displayTable">
+            <blockquote class="small-blockqoute" style="margin-top: 10px;">Seleccione los documentos que desea eliminar.</blockquote>
+            <button ng-click="enviar()" class="btn btn-primary" style="border-color:#423e3e" ng-disabled="!lista.length">
+                Eliminar
+                seleccionados
+            </button>
+        </div>
+    </div>
+    <div id="correcto" ng-style="displayCorrecto" class="modalA">
+        <div class="izquierda" style="padding-bottom:5px;">
+            <h4 class="title">Resumen de la operaci&oacute;n</h4>
+        </div>
+        <blockquote class="small-blockqoute">A continuaci&oacute;n se muestra el total de documentos seleccionados.</blockquote>
+        <h5 style="text-align:left">Total de documentos a eliminar:&nbsp;&nbsp;<b>{{numeroFac}}</b></h5>
+        <br />
+        <content class="conformidad">
+            <br />
+            <p>¿Desea eliminar la cartera?</p>
+            <button ng-click="eliminarTodos()" class="btn btn-primary" type="submit" style="border-color:#423e3e">Continuar</button>
+            <button ng-click="refrescar()" class="btn btn-danger" style="background-color:#423e3e; border-color:#423e3e;">Regresar</button>
+        </content>
+    </div>
+    <div class="p-a" ng-style="displayLoading">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/Factory/TokenFactory.js"></script>
+<script src="~/Scripts/Controller/ValidateTokenController.js"></script>
+<script src="~/Scripts/Factory/CancelarFactory.js"></script>
+<script src="~/Scripts/Controller/CancelarController.js"></script>
+

@@ -6,6 +6,8 @@ using Spring.Context;
 using Spring.Context.Support;
 using BuroFactorWS.src.security;
 using BuroFactorWS.src.bussines;
+using BuroFactorWS.src.bussines.impl;
+using GenericLinq.Correo;
 
 namespace BuroFactorWS.src.service
 {
@@ -21,7 +23,7 @@ namespace BuroFactorWS.src.service
         }
 
         private static ServiceBuro instance;
-
+        private ContenedorPlantillas _contenedor;
 
         public IValidateCredentials ValidateProvider
         {
@@ -47,6 +49,32 @@ namespace BuroFactorWS.src.service
                 return ctx.GetObject("RutinaCliente") as IRutinaCliente;
 
             }
+        }
+
+        public IRutinaOperacion RutinaOperacion
+        {
+            get
+            {
+                return ctx.GetObject("RutinaOperacion") as IRutinaOperacion;
+
+            }
+        }
+
+        public ContenedorPlantillas getContenedorPlantillas()
+        {
+            try
+            {
+                if (_contenedor == null)
+                {
+                    _contenedor = ctx.GetObject("ContenedorPlantillas") as ContenedorPlantillas;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return _contenedor;
         }
     }
 }

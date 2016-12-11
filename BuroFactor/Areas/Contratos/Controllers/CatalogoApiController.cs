@@ -11,18 +11,17 @@ using System.Web.Http;
 
 namespace BuroFactor.Areas.Contratos.Controllers
 {
+    //[Authorize(Roles = "ADMINISTRADOR")]
     public class CatalogoApiController : ApiController
     {
-
-        private IBuroQuery daoQuery = ServiceBuro.Instance.DaoBuro;
-
+        private IBuroQuery daoQuery; 
         [HttpPost]
         public async Task<HttpResponseMessage> getFinancieras()
         {
-
             List<financiera> financieras;
             try
             {
+                daoQuery = ServiceBuro.Instance.DaoBuro;
                 var task = Task.Run(() =>
                 {
                     financieras = daoQuery.getFinancieras();
@@ -44,9 +43,8 @@ namespace BuroFactor.Areas.Contratos.Controllers
 
                 return await task;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 throw;
             }
 
@@ -60,6 +58,7 @@ namespace BuroFactor.Areas.Contratos.Controllers
             List<financiera> financieras;
             try
             {
+                daoQuery = ServiceBuro.Instance.DaoBuro;
                 var task = Task.Run(() =>
                 {
                     financieras = daoQuery.getFinancieras(RFC);
@@ -99,6 +98,7 @@ namespace BuroFactor.Areas.Contratos.Controllers
             List<planconsulta> planes;
             try
             {
+                daoQuery = ServiceBuro.Instance.DaoBuro;
                 var task = Task.Run(() =>
                 {
                     planes = daoQuery.getPlanes();
@@ -132,6 +132,8 @@ namespace BuroFactor.Areas.Contratos.Controllers
             List<plancontratado> planes;
             try
             {
+                daoQuery = ServiceBuro.Instance.DaoBuro;
+
                 var task = Task.Run(() =>
                 {
                     planes = daoQuery.getPlanesPorFinanciera(financiera);

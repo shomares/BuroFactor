@@ -8,3 +8,8 @@ C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\bin\Debug\Gen
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.csprojResolveAssemblyReference.cache
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.dll
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\GenericLinq\obj\Debug\GenericLinq.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\GenericLinq\bin\Debug\GenericLinq.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\GenericLinq\bin\Debug\GenericLinq.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\GenericLinq\obj\Debug\GenericLinq.csprojResolveAssemblyReference.cache
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\GenericLinq\obj\Debug\GenericLinq.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\GenericLinq\obj\Debug\GenericLinq.pdb

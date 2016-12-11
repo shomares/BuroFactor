@@ -5,30 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Planes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+           Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaxConsultaMes)
+            # Numero de Consultas
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaRegistro)
+            Fecha de Registro
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaVencimiento)
+            Fecha de Vencimiento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Precio)
+            Precio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ilimitado)
+            Ilimitado
         </th>
         <th></th>
     </tr>
@@ -54,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Ilimitado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idPlanConsulta }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idPlanConsulta }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idPlanConsulta })
+            @Html.ActionLink("Editar", "Edit", new { id=item.idPlanConsulta }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idPlanConsulta }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.idPlanConsulta })
         </td>
     </tr>
 }

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" />
+  <xs:complexType name="ClientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Errores" nillable="true" type="tns:ArrayOfErroresClientesResponse" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientesResponse" nillable="true" type="tns:ClientesResponse" />
+  <xs:complexType name="ArrayOfErroresClientesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErroresClientesResponse" nillable="true" type="tns:ErroresClientesResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfErroresClientesResponse" nillable="true" type="tns:ArrayOfErroresClientesResponse" />
+  <xs:complexType name="ErroresClientesResponse">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" minOccurs="0" name="Cliente" nillable="true" type="q1:ClienteCarga" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErroresClientesResponse" nillable="true" type="tns:ErroresClientesResponse" />
+  <xs:complexType name="BuroResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FechaConstitucion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Relacion" nillable="true" type="tns:ArrayOfRelacionFinancieraResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BuroResponse" nillable="true" type="tns:BuroResponse" />
+  <xs:complexType name="ArrayOfRelacionFinancieraResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RelacionFinancieraResponse" nillable="true" type="tns:RelacionFinancieraResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRelacionFinancieraResponse" nillable="true" type="tns:ArrayOfRelacionFinancieraResponse" />
+  <xs:complexType name="RelacionFinancieraResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Financiera" nillable="true" type="tns:FinancieraBuroResponse" />
+      <xs:element minOccurs="0" name="Operaciones" nillable="true" type="tns:ArrayOfOperacionesResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelacionFinancieraResponse" nillable="true" type="tns:RelacionFinancieraResponse" />
+  <xs:complexType name="FinancieraBuroResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FechaConstitucion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RazonSocial" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FinancieraBuroResponse" nillable="true" type="tns:FinancieraBuroResponse" />
+  <xs:complexType name="ArrayOfOperacionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OperacionesResponse" nillable="true" type="tns:OperacionesResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperacionesResponse" nillable="true" type="tns:ArrayOfOperacionesResponse" />
+  <xs:complexType name="OperacionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Divisa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEmision" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaVencimiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Historial" nillable="true" type="tns:ArrayOfHistorialOperacionResponse" />
+      <xs:element minOccurs="0" name="MontoFinanciado" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MontoNominal" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperacionesResponse" nillable="true" type="tns:OperacionesResponse" />
+  <xs:complexType name="ArrayOfHistorialOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistorialOperacionResponse" nillable="true" type="tns:HistorialOperacionResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistorialOperacionResponse" nillable="true" type="tns:ArrayOfHistorialOperacionResponse" />
+  <xs:complexType name="HistorialOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistorialOperacionResponse" nillable="true" type="tns:HistorialOperacionResponse" />
+  <xs:complexType name="CambiaClienteRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CambiaClienteRequest" nillable="true" type="tns:CambiaClienteRequest" />
+  <xs:complexType name="OperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Errores" nillable="true" type="tns:ArrayOfErroresOperacionResponse" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperacionResponse" nillable="true" type="tns:OperacionResponse" />
+  <xs:complexType name="ArrayOfErroresOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErroresOperacionResponse" nillable="true" type="tns:ErroresOperacionResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfErroresOperacionResponse" nillable="true" type="tns:ArrayOfErroresOperacionResponse" />
+  <xs:complexType name="ErroresOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" minOccurs="0" name="Operacion" nillable="true" type="q2:OperacionCarga" />
+      <xs:element minOccurs="0" name="isRiesgo" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErroresOperacionResponse" nillable="true" type="tns:ErroresOperacionResponse" />
+  <xs:complexType name="ArrayOfCambiaEstadoOperacionRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CambiaEstadoOperacionRequest" nillable="true" type="tns:CambiaEstadoOperacionRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCambiaEstadoOperacionRequest" nillable="true" type="tns:ArrayOfCambiaEstadoOperacionRequest" />
+  <xs:complexType name="CambiaEstadoOperacionRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdEmisor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CambiaEstadoOperacionRequest" nillable="true" type="tns:CambiaEstadoOperacionRequest" />
+</xs:schema>

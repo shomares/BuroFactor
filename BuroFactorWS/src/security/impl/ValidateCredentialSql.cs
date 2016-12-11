@@ -26,20 +26,12 @@ namespace BuroFactorWS.src.security.impl
         {
             plancontratado planContratado = null;
             //La solicitud se hizo desde el portal-------------------
-            if (String.IsNullOrEmpty(password))
+
+            planContratado = new plancontratado()
             {
-                userName = Encripta.Decrypt(userName);
-                planContratado = DaoSeguridad.getPlan(userName);
-                planContratado.ContrasenaWS = "";
-            }
-            else
-            {
-                planContratado = new plancontratado()
-                {
-                    UsuarioWS = userName,
-                    ContrasenaWS = password
-                };
-            }
+                UsuarioWS = userName,
+                ContrasenaWS = password
+            };
 
             if (planContratado != null)
                 return DaoSeguridad.validaUsuarioWs(planContratado.UsuarioWS, planContratado.ContrasenaWS);

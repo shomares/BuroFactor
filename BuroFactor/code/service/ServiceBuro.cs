@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using BuroFactor.code.bussines.interfaces;
 using BuroComun.src.security;
+using GenericLinq.Excel.Data;
+using BuroFactor.code.dao;
 
 namespace BuroFactor.code.service
 {
@@ -35,7 +37,13 @@ namespace BuroFactor.code.service
 
         }
 
-        public IEncripta FactoryEncripta {
+        public IRutinaCambios createRutinaCambio()
+        {
+            return (ctx.GetObject("RutinaCambio") as IRutinaCambios)?.Create();
+        }
+
+        public IEncripta FactoryEncripta
+        {
             get
             {
 
@@ -43,13 +51,23 @@ namespace BuroFactor.code.service
             }
         }
 
+        public IRutinaOpenacion createRutinaOperacion()
+        {
+            return (ctx.GetObject("RutinaOperacion") as IRutinaOpenacion)?.create();
+        }
+
         public IContrato Contrato
         {
             get
             {
-
                 return ctx.GetObject("ContratoBusiness") as IContrato;
             }
+        }
+
+        public IRutinaCliente createRutinaCliente()
+        {
+
+            return (ctx.GetObject("RutinaCliente") as IRutinaCliente)?.create();
         }
 
         public IBuroQuery DaoBuro
@@ -59,6 +77,25 @@ namespace BuroFactor.code.service
                 return ctx.GetObject("DaoBuro") as IBuroQuery;
             }
         }
+
+        public IContainerLayout Container { get { return ctx.GetObject("ContainerLayout") as IContainerLayout; } }
+
+        public ITokenOperaciones ValidaToken
+        {
+            get { return ctx.GetObject("ITokenOperaciones") as ITokenOperaciones; }
+
+        }
+
+        public TimeSpan TiempoSesion
+        {
+            get
+            {
+                return TimeSpan.FromMinutes(20);
+
+            }
+        }
+
+        public IDaoCore DaoCore { get { return ctx.GetObject("DaoCore") as IDaoCore; } }
 
         public ContenedorPlantillas getContenedorPlantillas()
         {

@@ -22,10 +22,11 @@
     <MetadataSource Address="http://localhost/BuroFactorWS/BuroFactorService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BuroFactorService.xsd" MetadataType="Schema" ID="b2d2b574-2dd1-49a8-8bd0-833a427c078d" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" />
     <MetadataFile FileName="BuroFactorService1.xsd" MetadataType="Schema" ID="e52d62eb-c541-429e-a500-ad53acc96ed6" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd1" />
-    <MetadataFile FileName="BuroFactorService.wsdl" MetadataType="Wsdl" ID="bfd8a97f-431b-47be-bac7-5e881d1ffd85" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?wsdl" />
     <MetadataFile FileName="BuroFactorService2.xsd" MetadataType="Schema" ID="f60f4da7-24de-4188-a99d-a9cc745088ce" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BuroFactorService.wsdl" MetadataType="Wsdl" ID="bfd8a97f-431b-47be-bac7-5e881d1ffd85" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?wsdl" />
+    <MetadataFile FileName="BuroFactorService.xsd" MetadataType="Schema" ID="b2d2b574-2dd1-49a8-8bd0-833a427c078d" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BuroFactorService3.xsd" MetadataType="Schema" ID="9dca4aa0-dd96-48f0-ba04-77a248b5ffef" SourceId="1" SourceUrl="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

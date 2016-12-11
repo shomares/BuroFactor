@@ -41,6 +41,7 @@
         <AssociationConnector Association="burofactorModel.codigopostal_has_colonia" ManuallyRouted="false" />
         <EntityTypeShape EntityType="burofactorModel.ticket" Width="1.5" PointX="7.5" PointY="14.75" />
         <AssociationConnector Association="burofactorModel.fk_Ticket_PlanContratado1" />
+        <AssociationConnector Association="burofactorModel.fk_Deuda_Financiera1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

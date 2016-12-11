@@ -143,7 +143,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_GetDataUsingDataContract_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ValidaClientes_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -162,7 +162,235 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_GetDataUsingDataContract_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ValidaClientes_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_RegistraClientes_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_RegistraClientes_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ConsultaBuro_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ConsultaBuro_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_EditaCliente_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_EditaCliente_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ValidaOperaciones_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_ValidaOperaciones_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_RegistraOperaciones_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_RegistraOperaciones_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_CambiaEstado_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IBuroFactorService_CambiaEstado_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -185,7 +413,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS" />
+      <xsd:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" />
+      <xsd:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IBuroFactorService_GetData_InputMessage">
@@ -194,20 +423,80 @@
   <wsdl:message name="IBuroFactorService_GetData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataResponse" />
   </wsdl:message>
-  <wsdl:message name="IBuroFactorService_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  <wsdl:message name="IBuroFactorService_ValidaClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaClientes" />
   </wsdl:message>
-  <wsdl:message name="IBuroFactorService_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  <wsdl:message name="IBuroFactorService_ValidaClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_RegistraClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraClientes" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_RegistraClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_ConsultaBuro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaBuro" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_ConsultaBuro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultaBuroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_EditaCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditaCliente" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_EditaCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditaClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_ValidaOperaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaOperaciones" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_ValidaOperaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidaOperacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_RegistraOperaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraOperaciones" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_RegistraOperaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraOperacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_CambiaEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:CambiaEstado" />
+  </wsdl:message>
+  <wsdl:message name="IBuroFactorService_CambiaEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CambiaEstadoResponse" />
   </wsdl:message>
   <wsdl:portType name="IBuroFactorService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/GetData" message="tns:IBuroFactorService_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/GetDataResponse" message="tns:IBuroFactorService_GetData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/GetDataUsingDataContract" message="tns:IBuroFactorService_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/GetDataUsingDataContractResponse" message="tns:IBuroFactorService_GetDataUsingDataContract_OutputMessage" />
+    <wsdl:operation name="ValidaClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/ValidaClientes" message="tns:IBuroFactorService_ValidaClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/ValidaClientesResponse" message="tns:IBuroFactorService_ValidaClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/RegistraClientes" message="tns:IBuroFactorService_RegistraClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/RegistraClientesResponse" message="tns:IBuroFactorService_RegistraClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBuro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/ConsultaBuro" message="tns:IBuroFactorService_ConsultaBuro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/ConsultaBuroResponse" message="tns:IBuroFactorService_ConsultaBuro_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditaCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/EditaCliente" message="tns:IBuroFactorService_EditaCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/EditaClienteResponse" message="tns:IBuroFactorService_EditaCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidaOperaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/ValidaOperaciones" message="tns:IBuroFactorService_ValidaOperaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/ValidaOperacionesResponse" message="tns:IBuroFactorService_ValidaOperaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraOperaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/RegistraOperaciones" message="tns:IBuroFactorService_RegistraOperaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/RegistraOperacionesResponse" message="tns:IBuroFactorService_RegistraOperaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBuroFactorService/CambiaEstado" message="tns:IBuroFactorService_CambiaEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBuroFactorService/CambiaEstadoResponse" message="tns:IBuroFactorService_CambiaEstado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IBuroFactorService" type="tns:IBuroFactorService">
@@ -224,14 +513,80 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="ValidaClientes">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/ValidaClientes" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_GetDataUsingDataContract_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ValidaClientes_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_GetDataUsingDataContract_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ValidaClientes_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraClientes">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/RegistraClientes" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_RegistraClientes_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_RegistraClientes_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBuro">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/ConsultaBuro" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ConsultaBuro_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ConsultaBuro_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditaCliente">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/EditaCliente" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_EditaCliente_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_EditaCliente_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaOperaciones">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/ValidaOperaciones" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ValidaOperaciones_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_ValidaOperaciones_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraOperaciones">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/RegistraOperaciones" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_RegistraOperaciones_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_RegistraOperaciones_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <soap12:operation soapAction="http://tempuri.org/IBuroFactorService/CambiaEstado" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_CambiaEstado_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IBuroFactorService_CambiaEstado_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -247,8 +602,62 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="ValidaClientes">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/ValidaClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraClientes">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/RegistraClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaBuro">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/ConsultaBuro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditaCliente">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/EditaCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidaOperaciones">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/ValidaOperaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraOperaciones">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/RegistraOperaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiaEstado">
+      <soap:operation soapAction="http://tempuri.org/IBuroFactorService/CambiaEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -265,7 +674,7 @@
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
             <X509Data>
-              <X509Certificate>MIICzjCCAbagAwIBAgIQcSpwDWUFn4tIHxnzSoFJCjANBgkqhkiG9w0BAQUFADAQMQ4wDAYDVQQDEwVlbmVhczAeFw0xNjExMjQwNDQzMTBaFw0xNzExMjMwMDAwMDBaMBAxDjAMBgNVBAMTBWVuZWFzMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsYPWSTOP6uGv5ZaIWa9DkB/6jzYXtuEEX+T1FwEgGpFVxZUmO81gBOph3hE0bYUSPJa1ZEjo6xuiRsDmTj69GjbezvxdJR0Q3UYyhCoAqoQ5kErsG4K5Qbo/Nshory81tb3HIxiI+YJNVX9BPyJhPc+wHZakg01MwRzhh7k2HHkfdDUkX9Qhjo93II2IM/Y8bpn2RuqhL9JQJ92JnDqjU/N6R99Cw0/hDZBSkErwNpm6LfSujOZXtf3mv/3QzPe5lu9KvAQgUGJb/9CTgWnEuDSFRmHTXCx80Rp23cibuk3GkNm9gT8P6VkqzDA6qSJ7no3Gz1OE2NSqMuHDgma21wIDAQABoyQwIjALBgNVHQ8EBAMCBDAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDQYJKoZIhvcNAQEFBQADggEBAAD9aVtbbPMVX1+s+ca959eSWX/dnFpQHuHkJMDNwKGbmrckmEUgiWzbsU9LUOEgV3akglzvMwoV82THSAI0IHx6uB1CW9jupjXlIaUHzIrcA1HrvL+QZNVEfG6Tc+nJrepQeHi+1E+J7KZ8DN/Swh8xB68XNGRkZHdBVsDXElA2mWVVCdFdIt5uw6FaS0vYIL8CrLhN5oI+t/AMtPHWcYiT2uoqe5VrZCpUboCC3ivxrRzINVsxIr5Gv8Lh6RFEKiUHY+LCPoR3HnnaPFHhUm7YLsI5ncRnsBRkOxYRY1f79DQn1TPXlqnlfRQRsUw2WH4kIkN656VWqnCVXvPcQRI=</X509Certificate>
+              <X509Certificate>MIIC4jCCAcqgAwIBAgIQc1U8VQMd061J4gsghiYztTANBgkqhkiG9w0BAQUFADAaMRgwFgYDVQQDEw9ERVNBUlJPTExBRE9SOTkwHhcNMTYwNjI3MTcxNzQzWhcNMTcwNjI3MDAwMDAwWjAaMRgwFgYDVQQDEw9ERVNBUlJPTExBRE9SOTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDCMtPMhjlG5zfUDavt9E8wxO8HJR9He2YXZcCfcEWVqFzFfJl5nhQwDdHKcCxaCabi2PGT7QXz/upWv7sdQo3lMgS6B6P0JXxy58jNzs0sMZnHvM+B9fP09OK6NQ28Y7gP3mia47EeTIak6rhdoePFBln/X8CvaQFmDzYwWJe+6PBE4895Jsya5OqQbKeDbRBeghJjI28azcGAwAuNZpFI/I35Vo7fVrEY3IvEuRngrBqsWYKKyCALlK4vKMnyCdQGvqYxbfsDGbBuKsbGkDyi7dPMV2l8wxxCH/xnoYUpxWPtvbfdGlUakQ2JiQT/ucmuBkrMkmWOPMjOqEPF+DOTAgMBAAGjJDAiMAsGA1UdDwQEAwIEMDATBgNVHSUEDDAKBggrBgEFBQcDATANBgkqhkiG9w0BAQUFAAOCAQEAK8/Qm8PZRXX6t99IQ/qeP1rYpdtYvjbbPIpFhRdSf6ZYl2yyweB2FGEZeF3tAREui2iGt4dNK5HtJYerwNxdr3NISCZSSiy+qTvuCbHn1lOpJms4Sj9++EsTeOvpd3tjwwpk/a/jnJhtMFoSKMaUU0QnMhGZocg1EJdaTm8Hc/ByeiorO6P4RGw9kRYtVQlU5FkM9LBPXIY7owYR2c7NhTTWMZqA5hL1UcAf2SJrUd+oopq5SlKYsNjYrKKdybmHx0DYPs6MQWLnvNqAMhP5f+eC/nubMJtCSXlEL8mIHMrbhajWgMcXo6zLOKydm53WRXf7XYBk3Rgf2n8RIM9A3g==</X509Certificate>
             </X509Data>
           </KeyInfo>
         </Identity>

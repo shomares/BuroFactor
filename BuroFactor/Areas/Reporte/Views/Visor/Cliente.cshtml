@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Cancelacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="ClientesController">
+    <div id="control">
+        <div ng-style="displayInicio">
+            <div class="izquierda">
+                <h1 class="title">Clientes</h1>
+            </div>
+            <blockquote class="small-blockqoute">Especifique los filtros de b&uacute;squeda</blockquote>
+            <div class="row">
+                <form ng-submit="buscarFacturas()">
+                    <div class="col-md-6">
+                        <div>
+                            <table>
+                                <tr>
+                                    <td><label>Minimo Monto Total Financiado</label></td>
+                                    <td>
+                                        <input id="minMontoMin" type="number" min="0" max="999999999" step="any"
+                                               class="form-control" ng-model="minMontoMin"  required/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="width:100%; text-align:right; height:0px;  margin-top:5px; padding-right:150px; margin-bottom:13px;">
+                        <input type="submit" class="btn btn-primary" value="Consultar" style="margin-top:10px; margin-left: 196px" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="p-a" ng-style="displayLoading">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/Controller/reportes/VisorController.js"></script>
+<script src="~/Scripts/Factory/reportes/C.js"></script>
+<script src="~/Scripts/Controller/reportes/OperacionVigenteController.js"></script>
+

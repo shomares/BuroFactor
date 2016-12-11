@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="burofactorModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="burofactorModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="codigopostal">
           <Key>
             <PropertyRef Name="idCodigoPostal" />
@@ -54,6 +54,7 @@ warning 6002: The table/view 'def.burofactor.codigopostal_has_colonia' does not 
           <Property Name="Divisa_idDivisa" Type="int" Nullable="false" />
           <Property Name="idEmisor" Type="int" Nullable="false" />
           <Property Name="idDeudor" Type="int" Nullable="false" />
+          <Property Name="Financiera_idFinanciera" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="direccion">
           <Key>
@@ -230,6 +231,18 @@ warning 6002: The table/view 'def.burofactor.codigopostal_has_colonia' does not 
             </Principal>
             <Dependent Role="deuda">
               <PropertyRef Name="Divisa_idDivisa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Deuda_Financiera1">
+          <End Role="financiera" Type="Self.financiera" Multiplicity="1" />
+          <End Role="deuda" Type="Self.deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="financiera">
+              <PropertyRef Name="idFinanciera" />
+            </Principal>
+            <Dependent Role="deuda">
+              <PropertyRef Name="Financiera_idFinanciera" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -444,6 +457,10 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
             <End Role="divisa" EntitySet="divisa" />
             <End Role="deuda" EntitySet="deuda" />
           </AssociationSet>
+          <AssociationSet Name="fk_Deuda_Financiera1" Association="Self.fk_Deuda_Financiera1">
+            <End Role="financiera" EntitySet="financiera" />
+            <End Role="deuda" EntitySet="deuda" />
+          </AssociationSet>
           <AssociationSet Name="fk_Deuda_RelacionClienteFinanciera1" Association="Self.fk_Deuda_RelacionClienteFinanciera1">
             <End Role="relacionclientefinanciera" EntitySet="relacionclientefinanciera" />
             <End Role="deuda" EntitySet="deuda" />
@@ -554,6 +571,8 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
           <NavigationProperty Name="relacionclientefinanciera" Relationship="Self.fk_Deuda_RelacionClienteFinanciera1" FromRole="deuda" ToRole="relacionclientefinanciera" />
           <NavigationProperty Name="relacionclientefinanciera1" Relationship="Self.fk_Deuda_RelacionClienteFinanciera2" FromRole="deuda" ToRole="relacionclientefinanciera" />
           <NavigationProperty Name="operacion" Relationship="Self.fk_Historial_Operacion1" FromRole="deuda" ToRole="operacion" />
+          <Property Name="Financiera_idFinanciera" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="financiera" Relationship="burofactorModel.fk_Deuda_Financiera1" FromRole="deuda" ToRole="financiera" />
         </EntityType>
         <EntityType Name="direccion">
           <Key>
@@ -601,6 +620,7 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
           <Property Name="Activa" Type="Boolean" Nullable="false" />
           <Property Name="Correo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="usuario" Relationship="burofactorModel.fk_Usuario_Financiera1" FromRole="financiera" ToRole="usuario" />
+          <NavigationProperty Name="deuda" Relationship="burofactorModel.fk_Deuda_Financiera1" FromRole="financiera" ToRole="deuda" />
         </EntityType>
         <EntityType Name="municipio">
           <Key>
@@ -665,7 +685,7 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
           <Property Name="FechaContrato" Type="DateTime" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="ContrasenaWS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UsuarioWS" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioWS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="consulta" Relationship="Self.fk_Consulta_PlanContratado1" FromRole="plancontratado" ToRole="consulta" />
           <NavigationProperty Name="financiera" Relationship="Self.fk_PlanContratado_Financiera1" FromRole="plancontratado" ToRole="financiera" />
           <NavigationProperty Name="planconsulta" Relationship="Self.fk_PlanContratado_PlanConsulta1" FromRole="plancontratado" ToRole="planconsulta" />
@@ -971,6 +991,10 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
             <End Role="financiera" EntitySet="financiera" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
+          <AssociationSet Name="fk_Deuda_Financiera1" Association="burofactorModel.fk_Deuda_Financiera1">
+            <End Role="financiera" EntitySet="financiera" />
+            <End Role="deuda" EntitySet="deuda" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="usuario">
           <Key>
@@ -993,6 +1017,18 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
               <PropertyRef Name="idFinanciera" />
             </Principal>
             <Dependent Role="usuario">
+              <PropertyRef Name="Financiera_idFinanciera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Deuda_Financiera1">
+          <End Type="burofactorModel.financiera" Role="financiera" Multiplicity="1" />
+          <End Type="burofactorModel.deuda" Role="deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="financiera">
+              <PropertyRef Name="idFinanciera" />
+            </Principal>
+            <Dependent Role="deuda">
               <PropertyRef Name="Financiera_idFinanciera" />
             </Dependent>
           </ReferentialConstraint>
@@ -1034,6 +1070,7 @@ FROM `codigopostal_has_colonia` AS `codigopostal_has_colonia`</DefiningQuery>
           <EntitySetMapping Name="deuda">
             <EntityTypeMapping TypeName="burofactorModel.deuda">
               <MappingFragment StoreEntitySet="deuda">
+                <ScalarProperty Name="Financiera_idFinanciera" ColumnName="Financiera_idFinanciera" />
                 <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
                 <ScalarProperty Name="FechaOperacion" ColumnName="FechaOperacion" />
                 <ScalarProperty Name="MontoFinanciado" ColumnName="MontoFinanciado" />

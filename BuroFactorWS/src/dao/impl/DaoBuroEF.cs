@@ -177,5 +177,218 @@ namespace BuroFactorWS.src.dao.impl
             return salida;
 
         }
+
+        public IDaoBuro createContext()
+        {
+            return (IDaoBuro)this.MemberwiseClone();
+        }
+
+        public relacionclientefinanciera getEmisora(string idEmisor, financiera financiera)
+        {
+            relacionclientefinanciera salida = null;
+            if (Database != null)
+                salida = Database.relacionclientefinanciera.Where(aux => aux.Alias == idEmisor && aux.Financiera_idFinanciera == financiera.idFinanciera).FirstOrDefault();
+            return salida;
+
+        }
+
+        public divisa getDivisa(string divisa)
+        {
+            divisa salida = null;
+            if (Database != null)
+                salida = Database.divisa.Where(aux => aux.nombre == divisa).FirstOrDefault();
+
+            return salida;
+        }
+
+        public List<financiera> getFinancieraConRiesgo(OperacionCarga elemento, financiera financiera)
+        {
+            List<financiera> salida = null;
+            if (Database != null)
+            {
+                salida = (from aux in Database.deuda
+                              //El segundo elemento a observar si un documento es parecido a alguna deuda
+                              //Es decir que sea del mismo emisor
+                              //Y que no haya sido pagado
+                          where
+                          (
+                             aux.FolioDocumento == elemento.Folio &&
+                            (aux.MontoNominal - elemento.MontoNominal) <= (decimal).5 &&
+                            aux.relacionclientefinanciera.Persona_idPersona == getEmisora(elemento.idProveedor, financiera).Persona_idPersona &&
+                            aux.FechaEmision == aux.FechaEmision &&
+                            !aux.operacion.Where(p => p.Tipo == "P" && p.idDeuda == aux.idDeuda).Any()
+                          )
+                          //El segundo elemento a observar si un documento es parecido a alguna deuda
+                          //Es decir que sea del mismo emisor
+                          //Y que no haya sido pagado
+                          ||
+                          (
+                            aux.FolioDocumento == elemento.Folio &&
+                            (aux.MontoNominal - elemento.MontoNominal) <= (decimal).5 &&
+                            aux.relacionclientefinanciera1.Persona_idPersona == getEmisora(elemento.idEmisor, financiera).Persona_idPersona &&
+                            aux.FechaEmision == aux.FechaEmision &&
+                            !aux.operacion.Where(p => p.Tipo == "P" && p.idDeuda == aux.idDeuda).Any()
+                          )
+                          select aux.relacionclientefinanciera.financiera
+                        ).ToList();
+
+            }
+
+            return salida;
+
+        }
+
+        public void registraOperacion(OperacionCarga elemento, financiera financiera)
+        {
+            if (Database != null)
+            {
+                deuda deuda = new deuda()
+                {
+
+                    FechaEmision = elemento.FechaEmision,
+                    FechaOperacion = DateTime.Now,
+                    FolioDocumento = elemento.Folio,
+                    FechaPago = elemento.fechaPago,
+                    MontoNominal = elemento.MontoNominal,
+                    MontoFinanciado = elemento.MontoFinanciado
+                };
+
+                deuda.Divisa_idDivisa = (from aux in Database.divisa
+                                         where aux.nombre == elemento.Divisa
+                                         select aux.idDivisa).FirstOrDefault();
+
+                deuda.idDeudor = (from aux in Database.relacionclientefinanciera
+                                  where aux.Financiera_idFinanciera == financiera.idFinanciera
+                                  && aux.Alias == elemento.idProveedor
+                                  select aux.idRelacionClienteFinanciera).FirstOrDefault();
+                deuda.idEmisor = (from aux in Database.relacionclientefinanciera
+                                  where aux.Financiera_idFinanciera == financiera.idFinanciera
+                                  && aux.Alias == elemento.idEmisor
+                                  select aux.idRelacionClienteFinanciera).FirstOrDefault();
+
+                deuda.Financiera_idFinanciera = financiera.idFinanciera;
+
+
+
+                if (deuda.Divisa_idDivisa > 0 && deuda.idDeudor > 0 && deuda.idEmisor > 0)
+                    Database.deuda.Add(deuda);
+                else
+                    throw new Exception("Falla de validacion");
+            }
+        }
+
+        public void Dispose()
+        {
+            if (this.Database != null)
+                this.Database.Dispose();
+        }
+
+        public deuda getDeuda(string folio, string idEmisor, financiera financiera)
+        {
+            deuda salida = null;
+            if (Database != null)
+                salida = (from aux in Database.deuda.Include(s => s.operacion)
+                          where aux.relacionclientefinanciera.Alias == idEmisor
+                          && aux.Financiera_idFinanciera == financiera.idFinanciera
+                          && aux.FolioDocumento == folio
+                          select aux).FirstOrDefault();
+
+            return salida;
+        }
+
+        public void registraEstado(operacion operacion)
+        {
+            if (Database != null)
+                Database.operacion.Add(operacion);
+        }
+
+        public relacionclientefinanciera getCliente(string rfc, financiera financiera)
+        {
+            relacionclientefinanciera salida = null;
+
+            if (Database != null)
+            {
+                salida = (from aux in Database.relacionclientefinanciera
+                          where aux.persona.RFC.Equals(rfc) && aux.financiera.idFinanciera == financiera.idFinanciera
+                          select aux).FirstOrDefault();
+            }
+            return salida;
+
+        }
+
+        public List<deuda> getDeudasRiesgo(OperacionCarga elemento, financiera financiera)
+        {
+            List<deuda> deudas = null;
+            relacionclientefinanciera emisora = getEmisora(elemento.idEmisor, financiera);
+            if (Database != null && emisora!=null)
+            {
+                deudas = (from p in Database.deuda
+                          where
+                            (p.FolioDocumento == elemento.Folio
+                            && p.Financiera_idFinanciera != financiera.idFinanciera
+                            && p.relacionclientefinanciera.Persona_idPersona == emisora.Persona_idPersona
+                            )
+                          select p
+                            ).ToList();
+                if (deudas.Count == 0)
+                    deudas = Database.deuda.Where(p =>
+                Math.Abs(p.MontoNominal - elemento.MontoNominal) < (decimal).5
+                && p.FechaEmision == elemento.FechaEmision
+                && p.Financiera_idFinanciera != financiera.idFinanciera
+                && p.relacionclientefinanciera1.Persona_idPersona == emisora.Persona_idPersona).ToList();
+            }
+
+            return deudas;
+
+        }
+
+        public bool validaRelacion(string rfc, financiera financiera)
+        {
+            bool salida = false;
+            if (Database != null)
+            {
+                salida = (from aux in Database.relacionclientefinanciera
+                          where aux.persona.RFC == rfc
+                          && aux.financiera.idFinanciera == financiera.idFinanciera
+                          select aux).Any();
+
+            }
+            return salida;
+        }
+
+        public persona getCliente(string rFC)
+        {
+            persona persona = null;
+            if (Database != null)
+            {
+                persona = (from aux in Database.persona
+                           where aux.RFC == rFC
+                           select aux).FirstOrDefault();
+            }
+            return persona;
+        }
+
+        public plancontratado getPlanContratado(string user)
+        {
+            plancontratado plan = null;
+            if (Database != null)
+            {
+                plan = (from aux in Database.plancontratado
+                        where aux.Activo && aux.UsuarioWS == user
+                        select aux).FirstOrDefault();
+            }
+            return plan;
+        }
+
+        public List<deuda> getDeudas(string rFC)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void registraConsultaBuro(consulta consulta)
+        {
+            if (Database != null)
+                Database.consulta.Add(consulta);
+        }
     }
 }

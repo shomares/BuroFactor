@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BuroFactorWS" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BuroFactorWS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="CompositeType">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfClienteCarga">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClienteCarga" nillable="true" type="tns:ClienteCarga" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:element name="ArrayOfClienteCarga" nillable="true" type="tns:ArrayOfClienteCarga" />
+  <xs:complexType name="ClienteCarga">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaConstitucion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idInterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rfc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClienteCarga" nillable="true" type="tns:ClienteCarga" />
+  <xs:complexType name="ArrayOfOperacionCarga">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OperacionCarga" nillable="true" type="tns:OperacionCarga" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperacionCarga" nillable="true" type="tns:ArrayOfOperacionCarga" />
+  <xs:complexType name="OperacionCarga">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Anticipo" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Divisa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEmision" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MontoNominal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaPago" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idEmisor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idProveedor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperacionCarga" nillable="true" type="tns:OperacionCarga" />
 </xs:schema>

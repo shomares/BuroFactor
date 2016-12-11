@@ -12,5 +12,6 @@ namespace BuroFactorWS.src.bussines
     {
         ClientesResponse ValidaClientes(List<ClienteCarga> lista, String user);
         ClientesResponse RegistraCliente(String ticket, String user);
+        ClientesResponse EditaCliente(CambiaClienteRequest editar, string user);
     }
 }

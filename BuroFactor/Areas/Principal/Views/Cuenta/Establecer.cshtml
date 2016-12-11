@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Establecer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-controller="EstablecerController" >
+    <h3>Establecer Contraseña</h3>
+    <form ng-submit="establecer()" >
+        <center>
+            <div style="margin-bottom: 25px" class="input-group">
+                <label>Contraseña Actual</label>
+                <input id="login-password" type="password" class="form-control" name="password" placeholder="password" ng-model="password" required>
+            </div>
+            <div style="margin-bottom: 25px" class="input-group">
+                <label>Contraseña Nueva</label>
+                <input id="login-password" type="password" class="form-control" name="password" placeholder="password" ng-model="passwordNueva" required>
+            </div>
+            <div style="margin-bottom: 25px" class="input-group">
+                <label>Repite la Contraseña</label>
+                <input id="login-password" type="password" class="form-control" name="password" placeholder="password" ng-model="passwordCopia" required>
+            </div>
+        </center>
+        <br />
+        <br />
+                <input type="submit" class="btn btn-success" value="Enviar" />
+        
+    </form>
+    <div class="p-a" ng-style="diplayLoad">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/factory/EstablecerFactory.js"></script>
+<script src="~/Scripts/controller/EstablecerController.js"></script>
+
+

@@ -1,5 +1,5 @@
 ﻿//Por qus
-var root = angular.module('BuroFactor', [])
+var root = angular.module('BuroFactor', ['angularFileUpload', 'ui.bootstrap'])
 .config(function ($locationProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,

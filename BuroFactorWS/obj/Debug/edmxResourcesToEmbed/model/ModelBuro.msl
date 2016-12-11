@@ -32,6 +32,7 @@
     <EntitySetMapping Name="deuda">
       <EntityTypeMapping TypeName="burofactorModel.deuda">
         <MappingFragment StoreEntitySet="deuda">
+          <ScalarProperty Name="Financiera_idFinanciera" ColumnName="Financiera_idFinanciera" />
           <ScalarProperty Name="idDeuda" ColumnName="idDeuda" />
           <ScalarProperty Name="FechaOperacion" ColumnName="FechaOperacion" />
           <ScalarProperty Name="MontoFinanciado" ColumnName="MontoFinanciado" />

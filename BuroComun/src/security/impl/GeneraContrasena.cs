@@ -41,14 +41,7 @@ namespace BuroComun.src.security.impl
 
         public string generaAleatorio()
         {
-            Random random = new Random();
-            String salida = "";
-            for (int i = 0; i < 10; i++)
-            {
-                char c = (char)random.Next(33, 125);
-                salida += c;
-            }
-            return salida;
+            return Guid.NewGuid().ToString();
 
         }
         public string generaPassword()

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS" />
+  <xs:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" />
+  <xs:import schemaLocation="http://localhost/BuroFactorWS/BuroFactorService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -15,17 +16,101 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataUsingDataContract">
+  <xs:element name="ValidaClientes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BuroFactorWS" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" minOccurs="0" name="lista" nillable="true" type="q1:ArrayOfClienteCarga" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataUsingDataContractResponse">
+  <xs:element name="ValidaClientesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BuroFactorWS" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="ValidaClientesResult" nillable="true" type="q2:ClientesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraClientes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ticket" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraClientesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="RegistraClientesResult" nillable="true" type="q3:ClientesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaBuro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultaBuroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="ConsultaBuroResult" nillable="true" type="q4:BuroResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditaCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="editar" nillable="true" type="q5:CambiaClienteRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditaClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="EditaClienteResult" nillable="true" type="q6:ClientesResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaOperaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BuroComun.src.model.cargas" minOccurs="0" name="lista" nillable="true" type="q7:ArrayOfOperacionCarga" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaOperacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="ValidaOperacionesResult" nillable="true" type="q8:OperacionResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraOperaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ticket" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraOperacionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="RegistraOperacionesResult" nillable="true" type="q9:OperacionResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiaEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="estados" nillable="true" type="q10:ArrayOfCambiaEstadoOperacionRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiaEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BuroFactorWS.src.response" minOccurs="0" name="CambiaEstadoResult" nillable="true" type="q11:OperacionResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

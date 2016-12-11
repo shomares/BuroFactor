@@ -1,0 +1,86 @@
+﻿@model BuroFactor.BuroService.BuroResponse
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null && !String.IsNullOrEmpty(Model.RazonSocial))
+{
+    <div>
+        <h1>Resultados</h1>
+        <h2 style="font-weight:bolder">Datos Generales</h2>
+        <br />
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <td style="font-weight:bolder">Razon Social</td>
+                    <td>@Model.RazonSocial</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bolder">RFC</td>
+                    <td>@Model.RFC</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bolder">Fecha Constitucion</td>
+                    <td>@Model.FechaConstitucion.ToString("d")</td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <h6 style="font-weight:bolder">Resumen</h6>
+        <br />
+
+        <table class="table table-striped">
+            <thead>
+                <tr><td>Financiera</td><td>RFC</td><td>Monto Financiado</td><td>Monto Pagado</td><td>Monto Deuda</td><td>Es Moroso</td></tr>
+            </thead>
+            @foreach (var relacion in Model.Relacion)
+            {
+                <tbody>
+                    @{
+                        bool isMoroso = relacion.Operaciones.Any(p => p.FechaVencimiento < DateTime.Now);
+                        string style = !isMoroso ? "background-color:Red" : null;
+                    }
+                    <tr style="@isMoroso">
+                        <td>@relacion.Financiera.RazonSocial</td>
+                        <td>@relacion.Financiera.RFC</td>
+                        <td>@String.Format("{0:c}", relacion.Operaciones.Sum(aux => aux.MontoFinanciado))</td>
+                        <td>@relacion.Operaciones.Where(p => p.Historial.Any(s => s.Tipo == "P")).Sum(aux => aux.MontoFinanciado)</td>
+                        <td>
+                            @String.Format("{0:c}", (relacion.Operaciones.Sum(aux => aux.MontoFinanciado) - relacion.Operaciones.Where(p => p.Historial.Any(s => s.Tipo == "P")).Sum(aux => aux.MontoFinanciado)))
+                        </td>
+                        <td>
+                            @(isMoroso ? "Si" : "No")
+                        </td>
+                    </tr>
+                </tbody>
+                        }
+
+        </table>
+
+        <br />
+        <br />
+
+        <button class="btn btn-primary" style="margin-left:60%" type="button" onclick="window.print();">
+            <i class="large material-icons">print</i>
+        </button>
+        <button class="btn btn-primary" type="button" onclick="window.history.go(-1);">
+            <i class="large material-icons">replay</i>
+        </button>
+
+
+    </div>
+                        }
+                        else
+                        {
+                            <script>
+                                alertify.alert("No hay resultados", function () {
+                                    window.history.go(-1);
+                                });
+
+                            </script>
+                        }
+
+
+
+

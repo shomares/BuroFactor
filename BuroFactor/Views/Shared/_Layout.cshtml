@@ -1,44 +1,157 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Parallax Template - Materialize</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/loading.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/alertify/alertify.core.css" rel="stylesheet" media="screen,projection" />
+    <link href="~/Content/alertify/alertify.bootstrap.css" rel="stylesheet" media="screen,projection" />
+
     <script src="~/Scripts/libs/angular.js"></script>
+    <script src="~/Scripts/libs/angular-file-upload.min.js"></script>
+    <script src="~/Scripts/libs/ui-bootstrap.js"></script>
+    <script src="~/Scripts/libs/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/libs/angular-cookie.js"></script>
     <script src="~/Scripts/controller/Rootapp.js"></script>
     <script src="~/Scripts/libs/Eventos.js"></script>
-    <script src="~/Home/RootPath"></script></head>
+    <script src="~/Scripts/alertify/alertify.min.js"></script>
+    <script src="~/Scripts/libs/JBrowser.js"></script>
+    <script src="~/Home/RootPath"></script>
+</head>
 <body ng-app="BuroFactor">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="row affix-row">
+        <div class="col-sm-3 col-md-2 affix-sidebar">
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="visible-xs navbar-brand">Factor Buro</span>
+                    </div>
+
+                    @if (User.IsInRole("ADMINISTRADOR"))
+                    {
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                            <ul class="nav navbar-nav" id="sidenav01">
+                                <li class="active">
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
+                                        <h4>
+                                            Factor Buro
+                                            <br>
+                                            <small>@User.Identity.Name - @(User.IsInRole("FINANCIERA") ? "FINANCIERA" : "CONTRATOS") <span class="caret"></span></small>
+                                        </h4>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo0" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="~/Principal/Cuenta/Establecer">Establecer Contraseña</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
+                                        <span class="glyphicon glyphicon-cloud"></span> Contratos <span class="caret pull-right"></span>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="~/Contratos/Financiera">Registrar Financiera</a></li>
+                                            <li><a href="~/Contratos/Plan">Registrar Plan</a></li>
+                                            <li><a href="~/Contratos/RegistraPlan">Admninistrar Contratos</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="active">
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
+                                        <span class="glyphicon glyphicon-inbox"></span>Reportes<span class="caret pull-right"></span>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo2" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="#">Consultas a Buro</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="~/Home/CloseSession">Cerrar sesión</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    }
+                    else
+                    {
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                            <ul class="nav navbar-nav" id="sidenav01">
+                                <li class="active">
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
+                                        <h4>
+                                            Factor Buro
+                                            <br>
+                                            <small>@User.Identity.Name - @(User.IsInRole("FINANCIERA") ? "FINANCIERA" : "CONTRATOS") <span class="caret"></span></small>
+                                        </h4>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo0" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="~/Principal/Cuenta/Establecer">Establecer Contraseña</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
+                                        <span class="glyphicon glyphicon-cloud"></span> Operaciones <span class="caret pull-right"></span>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Operacion/Operacion'">Carga Operaciones</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Operacion/Cliente'">Carga Clientes</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Operacion/Operacion/Cancelacion'">Cancela Operaciones</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Operacion/Operacion/Liquidar'">Liquida Operaciones</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="active">
+                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
+                                        <span class="glyphicon glyphicon-inbox"></span>Reportes<span class="caret pull-right"></span>
+                                    </a>
+                                    <div class="collapse" id="toggleDemo2" style="height: 0px;">
+                                        <ul class="nav nav-list">
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Visor/Vigente'">Operaciones Vigentes</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Visor/Vencida'">Operaciones Vencidas</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Visor/Cancelada'">Operaciones Canceladas</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Visor/Pagada'">Operaciones Liquidadas</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Visor/Clientes'">Clientes</a></li>
+                                            <li><a href="#" onclick="window.location.href = '/BuroFactor/Reporte/Buro'">Consulta Buro</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="#" onclick="window.location.href = '/BuroFactor/Home/CloseSession'">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    }
+
+
+
+
+                </div>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 affix-content">
+            <div class="container">
+                @RenderBody()
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+    @RenderSection("scripts", false)
+    <!--  Scripts-->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>

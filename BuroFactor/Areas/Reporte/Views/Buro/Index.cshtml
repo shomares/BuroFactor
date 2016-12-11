@@ -1,0 +1,46 @@
+﻿@model BuroFactor.Areas.Reporte.Models.ConsultaBuro
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Visualizar", "Buro"))
+{
+
+    <div class="form-horizontal">
+        <h4>Consulta Buro</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control", placeholder= "CAL0206045G9"  } })
+                @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="checkbox" id="Aceptar" style="margin-left: 57%;" ng-model="checked" /><label  style="margin-left: 57%;" for="Aceptar">Aceptar terminos</label>
+                <br />
+                <input type="submit" value="Consultar" class="btn btn-default" 
+                       style="margin-left: 57%; margin-top: 3%;"
+                       ng-disabled="!checked" ng-click="" />
+            </div>
+        </div>
+    </div>
+    
+}
+<div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+

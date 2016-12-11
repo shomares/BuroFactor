@@ -12,12 +12,10 @@ using System.Web.Http;
 
 namespace BuroFactor.Areas.Contratos.Controllers
 {
+    //[Authorize(Roles = "ADMINISTRADOR")]
     public class RegistroPlanApiController : ApiController
     {
-
         private IContrato Contratos = ServiceBuro.Instance.Contrato;
-
-
         [HttpPost]
         public async Task<HttpResponseMessage> registraContrato(ModelPlanRegisro plan)
         {

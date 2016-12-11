@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definicion>
+  <columnas>
+
+    <item>
+      <columna>ID Emisora</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <obligatorio>SI</obligatorio>
+      <valor>idEmisor</valor>
+      <orden>1</orden>
+    </item>
+
+    <item>
+      <columna>ID Proveedor</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <obligatorio>SI</obligatorio>
+      <valor>idProveedor</valor>
+      <orden>2</orden>
+    </item>
+
+    <item>
+      <columna>Folio</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <obligatorio>S</obligatorio>
+      <valor>Folio</valor>
+      <orden>3</orden>
+    </item>
+
+    <item>
+      <columna>Fecha de Emision</columna>
+      <formato>^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/](19|20)\d{2}$</formato>
+      <obligatorio>NO</obligatorio>
+      <valor>FechaEmision</valor>
+      <orden>4</orden>
+    </item>
+
+    <item>
+      <columna>Fecha Proxima de Pago</columna>
+      <formato>^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/](19|20)\d{2}$</formato>
+      <valor>fechaPago</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+
+    <item>
+      <columna>Monto Nominal</columna>
+      <formato>^[0-9\.\,]{0,10}$</formato>
+      <valor>MontoNominal</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+  
+  
+    <item>
+      <columna>Anticipo</columna>
+      <formato>^[0-9\.\,]{0,10}$</formato>
+      <valor>Anticipo</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+    
+  
+    <item>
+      <columna>Tipo Documento</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <valor>TipoDocumento</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+    
+    
+    <item>
+      <columna>Divisa</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <valor>Divisa</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+
+
+
+ 
+  </columnas>
+  <configuracion>
+    <defcolumnas>0</defcolumnas>
+    <ultimaLinea>true</ultimaLinea>
+    <validador-class>BuroComun.src.validator.ValidadorOperacion,BuroComun</validador-class>
+  </configuracion>
+
+
+
+</definicion>

@@ -22,3 +22,31 @@ C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroFactorWS\bin\GenericL
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroFactorWS\bin\GenericLinq.pdb
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroFactorWS\bin\DevTrends.WCFDataAnnotations.dll
 C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroFactorWS\bin\DevTrends.WCFDataAnnotations.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\BuroFactorWS.dll.config
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\BuroFactorWS.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\BuroFactorWS.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\BuroComun.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.Core.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\DevTrends.WCFDataAnnotations.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\EntityFramework.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\EntityFramework.SqlServer.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\GenericLinq.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\MySql.Data.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\MySql.Data.Entity.EF6.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Spring.Core.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\BuroComun.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\GenericLinq.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.Core.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Common.Logging.Core.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\DevTrends.WCFDataAnnotations.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\EntityFramework.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\EntityFramework.SqlServer.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\MySql.Data.Entity.EF6.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Spring.Core.pdb
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\bin\Spring.Core.xml
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\obj\Debug\BuroFactorWS.csprojResolveAssemblyReference.cache
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\obj\Debug\BuroFactorWS.dll
+C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\obj\Debug\BuroFactorWS.pdb

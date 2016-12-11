@@ -8,9 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BuroFactor.Models.dao;
+using BuroFactor.code.extension.html;
 
 namespace BuroFactor.Areas.Contratos.Controllers
 {
+    [Security(Roles = "ADMINISTRADOR", NotifyUrl = "~/Principal/Errores/Error404")]
     public class PlanController : Controller
     {
         private burofactorEntities db = new burofactorEntities();
@@ -47,7 +49,7 @@ namespace BuroFactor.Areas.Contratos.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> Create([Bind(Include = "idPlanConsulta,Nombre,MaxConsultaMes,FechaVencimiento,Precio,Ilimitado")] planconsulta planconsulta)
         {
             if (ModelState.IsValid)
@@ -87,7 +89,7 @@ namespace BuroFactor.Areas.Contratos.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> Edit([Bind(Include = "idPlanConsulta,MaxConsultaMes,FechaVencimiento,Precio,Ilimitado")] planconsulta planconsulta)
         {
             if (ModelState.IsValid)
@@ -122,7 +124,7 @@ namespace BuroFactor.Areas.Contratos.Controllers
 
         // POST: Contratos/Plan/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             planconsulta planconsulta = await db.planconsulta.FindAsync(id);

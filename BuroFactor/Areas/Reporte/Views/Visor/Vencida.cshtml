@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Cancelacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="OperacionVencidaController">
+    <div id="control">
+        <div ng-style="displayInicio">
+            <div class="izquierda">
+                <h4 class="title">Operaciones Vencidas</h4>
+            </div>
+            <blockquote class="small-blockqoute">Especifique los filtros de b&uacute;squeda</blockquote>
+            <div class="row">
+                <form ng-submit="buscarFacturas()">
+                    <div class="col-md-6" style="padding-bottom:10px">
+                        <div>
+                            <label>Emisor:</label>
+                            <select id="emisorSelect" class="browser-default" ng-model="empresa" ng-disabled="todosEmisores" ng-required="!todosEmisores">
+                                <option value="">Seleccione un emisor</option>
+                                <option ng-repeat="option in empresas" value="{{option.id}}">{{option.nombre}}</option>
+                            </select>
+                            <div class="align-text">
+                                <input type="checkbox" style="width:20px; margin-top:5px" value="Todas" ng-model="todosEmisores" ng-change="borraSeleccionEmisor()" id="todosEmisores" />
+                                <label for="todosEmisores" style="margin-top:5px;">Todas los emisores.</label>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div style="margin-top: -15px">
+                                <label>
+                                    Divisa:
+                                </label>
+                                <select id="divisasSelect" ng-model="divisa" class="browser-default"
+                                        ng-required="todasDivisas" ng-disabled="todasDivisas" required>
+                                    <option value="">Seleccione una divisa</option>
+                                    <option ng-repeat="option in divisas" value="{{option.id}}">{{option.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <table>
+                                <tr>
+                                    <td><label>Fecha Publicaci&oacute;n Inicial:</label></td>
+                                    <td><input id="FechaInicial" type="date" class="margin-controls" ng-model="FechaInicial" datepickerie max="9999-12-31" min="1800-01-01" /></td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr>
+                                    <td><label>Fecha Publicaci&oacute;n Final:</label></td>
+                                    <td><input id="FechaFinal" type="date" class="margin-controls" ng-model="FechaFinal" datepickerie max="9999-12-31" min="1800-01-01" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="width:100%; text-align:right; height:0px;  margin-top:5px; padding-right:150px; margin-bottom:13px;">
+                        <input type="submit" class="btn btn-primary" value="Consultar" style="margin-top:10px; margin-left: 196px" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="p-a" ng-style="displayLoading">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/Controller/reportes/VisorController.js"></script>
+<script src="~/Scripts/Factory/reportes/OperacionVencidaFactory.js"></script>
+<script src="~/Scripts/Controller/reportes/OperacionVencidaController.js"></script>
+

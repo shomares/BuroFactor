@@ -21,6 +21,7 @@ namespace ThreadExecutor.thread
     public class Result<T> {
         public object Objeto { get; set; }
         public States.StateEnum State { get; set; }
+        public string Notificacion { get; set; }
     }
 
     public interface IRunnable
@@ -32,8 +33,13 @@ namespace ThreadExecutor.thread
         //For .NET 4.5
         Result<Object> run();
         bool isBusy { get; }
+        string Name { get; set; }
+        string Result { get; set; }
+
         void kill();
         event ThreadExecutor.thread.EventIRunnable.OnAvance onAvance;
+
+        void Dispose();
     }
 
     public interface Runnable<T> : IRunnable

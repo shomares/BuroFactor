@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\walmart hp\Source\Repos\BuroFactor\BuroFactor\BuroFactorWS\model\ModelBuro.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\juanl_000\Source\Repos\BuroFactor-master\BuroFactor-master\BuroFactorWS\model\ModelBuro.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

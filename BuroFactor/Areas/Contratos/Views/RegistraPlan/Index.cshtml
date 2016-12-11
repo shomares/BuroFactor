@@ -4,70 +4,97 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ristra</h2>
+<h2>Registrar Contrato</h2>
 
 <div ng-controller="RegistroPlanController">
 
     <div ng-style="diplayFinancieras">
+        <h3>Buscar Financiera</h3>
         <form ng-submit="buscaFinanciera()">
             <div class="form-group">
-                <label class="control-label col-md-2">RFC</label>
-                <input type="text" ng-model="RFC" />
-            </div>
-            <input type="submit" />Guardar
-        </form>
-        <table class="overflow-y-long">
-            <thead>
-                <tr class="danger">
-                    <th style="text-align:justify;">RFC</th>
-                    <th style="text-align:justify;">Nombre</th>
-                    <th style="text-align:justify;">Editar Planes</th>
+                <label for="rfc" class="control-label col-md-2">
+                    RFC:
+                </label>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="c in financieras">
-                    <td style="text-align:justify;">{{c.rfc}}</td>
-                    <td style="text-align:justify;">{{c.razonSocial}}</td>
-                    <td style="text-align:justify;"><a href="" ng-click="cargaPlanes(c.idFinanciera);">Editar</a></td>
-                </tr>
-        </table>
+                <input id="rfc" type="search" class="form-control" ng-model="RFC" placeholder="VECJ880326XXX" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left:83%">
+                <i class="large material-icons">search</i>
+            </button>
+        </form>
+        <br />
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th style="text-align:justify;">RFC</th>
+                        <th style="text-align:justify;">Nombre</th>
+                        <th style="text-align:justify;">Editar Planes</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="c in financieras">
+                        <td style="text-align:justify;">{{c.rfc}}</td>
+                        <td style="text-align:justify;">{{c.razonSocial}}</td>
+                        <td style="text-align:justify;"><a href="" ng-click="cargaPlanes(c.idFinanciera);">Editar</a></td>
+                    </tr>
+            </table>
+        </div>
     </div>
     <div ng-style="diplayPlanes">
-
-        <p>{{current.financiera.razonSocial}}</p>
-        <table class="overflow-y-long">
-            <thead>
-                <tr class="danger">
-                    <th style="text-align:justify;">Plan</th>
-                    <th style="text-align:justify;">Fecha Contrato</th>
-                    <th style="text-align:justify;">Numero de Consultas al Mes</th>
-                    <th style="text-align:justify;">Cancelar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="c in planes">
-                    <td style="text-align:justify;">{{c.nombre}}</td>
-                    <td style="text-align:justify;">{{c.fechaContrato}}</td>
-                    <td style="text-align:justify;">{{c.maxConsultaMes}}</td>
-                    <td style="text-align:justify;"><a ng-click="cancelarPlan({{c.id}})">Cancelar</a></td>
-                </tr>
-        </table>
+        <h2>Financiera: {{current.financiera.razonSocial}}</p></h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="text-align:justify;">Nombre</th>
+                        <th style="text-align:justify;">Fecha Contrato</th>
+                        <th style="text-align:justify;">Consultas Mes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="c in planes">
+                        <td style="text-align:justify;">{{c.nombre}}</td>
+                        <td style="text-align:justify;">{{c.fechaContrato}}</td>
+                        <td style="text-align:justify;">{{c.maxConsultaMes}}</td>
+                        <td style="text-align:justify;"><a ng-click="cancelarPlan({{c.id}})">Cancelar</a></td>
+                    </tr>
+            </table>
+        </div>
         <form ng-submit="guardaPlan()">
+            <h3>Nuevo plan</h3>
             <div class="form-group">
                 <label class="control-label col-md-2">Plan</label>
-                <select id="divisasSelect" ng-model="current.plan" class="align-combo" width:196px"
+                <select id="divisasSelect" ng-model="current.plan" class="browser-default"
                         required>
                     <option value="">Seleccione un plan</option>
                     <option ng-repeat="option in todosPlanes" value="{{option.idPlanConsulta}}">{{option.nombre}}</option>
                 </select>
             </div>
-            <input type="submit" />Guardar
+            <button type="submit" class="btn btn-primary">
+                <i class="large material-icons">save</i>
+            </button>
 
+            <button type="button" class="btn btn-primary" onclick="window.location.reload();">
+                <i class="large material-icons">replay</i>
+            </button>
         </form>
 
 
 
+    </div>
+
+    <div class="p-a" ng-style="diplayLoad">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
     </div>
 
 </div>

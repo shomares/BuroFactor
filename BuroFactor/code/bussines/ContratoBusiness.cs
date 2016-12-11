@@ -133,9 +133,6 @@ namespace BuroFactor.code.bussines
 
                         };
 
-                        List<FileStream> adjuntos = new List<FileStream>();
-
-                        adjuntos.Add(new FileStream(Certificate, FileMode.Open));
 
                         Correo correo = new Correo()
                         {
@@ -147,18 +144,11 @@ namespace BuroFactor.code.bussines
                             Pass = ServidorCorreo.Contrasena,
                             Puerto = ServidorCorreo.Puerto,
                             CorreoDestinos = new List<DestinatarioCorreo>() { (new DestinatarioCorreo() { cuenta = planOriginal.financiera.Correo }) },
-                            streams = adjuntos
 
                         };
 
                         FactorEntity.SaveChanges();
                         correo.enviame();
-
-                        foreach (var elemento in adjuntos)
-                        {
-                            elemento.Close();
-                            elemento.Dispose();
-                        }
                         FactorEntity.Database.CurrentTransaction.Commit();
                     }
                     catch (Exception)

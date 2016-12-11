@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.TipoToken;
+}
+
+
+<div class="modal-body" id="naranja">
+    <div class="modal-token" style="align-items:center">
+        <center>
+            <h3>@ViewBag.TipoToken</h3>
+            <form ng-submit="validarToken()" ng-init="tipoToken('@ViewBag.ErrorToken')" autocomplete="off">
+                <table>
+                    <tr>
+                        <td>
+                            <center>
+                                <input class="form-control" style="color:#141313; width: 230px; margin-left: 16px" placeholder="@ViewBag.TipoToken" ng-model="token" type="password" name="token" required autofocus />
+                            </center>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                </table>
+               <input value="Validar" class="btn btn-primary" type="submit" style="background-color:#423e3e; border-color:#423e3e; margin-left: 11px; margin-bottom:10px" />
+               <input value="Regresar" class="btn btn-primary" type="button" style="background-color:#423e3e; border-color:#423e3e; margin-left: 11px ; margin-bottom:10px" ng-click="cancelar()" />
+
+            </form>
+            <div class="p-a" ng-style="displayLoading">
+                <div id="cover" class="cover">
+                </div>
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<definicion>
+  <columnas>
+
+    <item>
+      <columna>ID Interno</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <obligatorio>SI</obligatorio>
+      <valor>idInterno</valor>
+      <orden>1</orden>
+    </item>
+
+    <item>
+      <columna>RFC</columna>
+      <formato>^[a-zA-Z]{3,4}(\d{6})((\D|\d){3})?$</formato>
+      <obligatorio>SI</obligatorio>
+      <valor>rfc</valor>
+      <orden>2</orden>
+    </item>
+
+    <item>
+      <columna>Nombre</columna>
+      <formato>^[0-9A-Za-z\u00f1\u00d1\,\/\.\-\ ]{0,100}$</formato>
+      <obligatorio>S</obligatorio>
+      <valor>nombre</valor>
+      <orden>3</orden>
+    </item>
+
+    <item>
+      <columna>Fecha de Constitucion</columna>
+      <formato>^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/](19|20)\d{2}$</formato>
+      <obligatorio>NO</obligatorio>
+      <valor>fechaConstitucion</valor>
+      <orden>4</orden>
+    </item>
+
+    <item>
+      <columna>Correo</columna>
+      <formato>^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$</formato>
+      <valor>correo</valor>
+      <obligatorio>SI</obligatorio>
+      <orden>5</orden>
+    </item>
+  </columnas>
+  <configuracion>
+    <defcolumnas>0</defcolumnas>
+    <ultimaLinea>true</ultimaLinea>
+    <validador-class>BuroComun.src.validator.ValidadorCargaClientes,BuroComun</validador-class>
+  </configuracion>
+
+
+
+</definicion>

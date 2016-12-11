@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="OperacionController" ng-cloak>
+    <div id="control" ng-style="displayBusqueda">
+        <div class="izquierda">
+            <h1 class="title">Carga Operaciones</h1>
+        </div>
+        <blockquote class="small-blockqoute" style="text-align:justify">En esta secci&oacute;n, usted podr&aacute; cargar un archivo con uno o m&aacute;s operaciones para su publicaci&oacute;n, para ello, es necesario que este archivo cumpla con un formato predefinido, por lo que, lo invitamos a descargarlo, desde la opci&oacute;n <a href="~/Principal/Ayuda/DescargaLayout/" target="_self"><b>> Ayuda > Formato del Archivo</b></a> <br /> Una vez creado, selecci&oacute;nelo para su publicaci&oacute;n.</blockquote>
+        <form ng-submit="send();">
+            <br />
+            <input type="file" name="file" nv-file-select="" uploader="uploader" width="100" style="display:none" id="file" />
+            <label for="file">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+                    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                </svg>
+                <span>Cargar Archivo</span>
+            </label>
+            <br />
+            <br />
+            <button class="btn btn-primary" type="submit" style="background-color:#423e3e; border-color:#423e3e" ng-disabled="!uploader.getNotUploadedItems().length">Publicar</button>
+        </form>
+    </div>
+    <div id="error" ng-style="displayError" class="component">
+        <h5>Se produjeron los siguientes <b>errores</b> en la carga del archivo:</h5>
+        <table class="overflow-y-long">
+            <thead>
+                <tr class="danger">
+                    <th style="text-align:justify;">Operacion</th>
+                    <th style="text-align:justify;">Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in errores">
+                    <td style="text-align:justify;">{{c.folio}}</td>
+                    <td style="text-align:justify;">{{c.error}}</td>
+                </tr>
+
+        </table>
+        <br />
+        <blockquote class="small-blockqoute" style="text-align:justify">Si tiene problemas para capturar sus clientes, puede consultar la informaci&oacute;n de ayuda desde la opci&oacute;n <a href="~/Principal/Ayuda/ManualEmisor/" target="_self"><b>> Ayuda > Manual del Formato del Archivo</b></a> <br /> Para cualquier duda o comentario estamos a sus &oacute;rdenes en el &aacute;rea de atenci&oacute;n a clientes en los tel&eacute;fonos 53 26 86 86 y 01 800 504 78 00 Opci&oacute;n 4 Servicios Bancarios y despu&eacute;s Opci&oacute;n 3 Factoraje.</blockquote>
+        <br />
+        <button ng-click="refrescar()" class="btn btn-primary" type="submit" style="background-color:#423e3e; border-color:#423e3e">Aceptar</button>
+    </div>
+    <div>
+        <div id="correcto" ng-style="displayCorrecto" class="modalA">
+            <content class="conformidad">
+                <div ng-if="riesgos.length>0">
+                    <h2>Riesgo</h2>
+                    <table class="overflow-y-long">
+                        <thead>
+                            <tr class="danger">
+                                <th style="text-align:justify;">Operacion</th>
+                                <th style="text-align:justify;">Riesgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="c in riesgos">
+                                <td style="text-align:justify;">{{c.folio}}</td>
+                                <td style="text-align:justify;">{{c.riesgo}}</td>
+                            </tr>
+                    </table>
+                </div>
+                <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="aceptoConfirmar" />
+                <label for="filled-in-box">Aceptar</label>
+                <p>¿Desea registrar las operaciones?</p>
+                <button ng-click="publicar()" class="btn btn-primary" type="submit" ng-disabled="!aceptoConfirmar" ng-model="Continuar">Continuar</button>
+                <button ng-click="refrescar()" class="btn btn-danger" style="background-color:#423e3e; border-color:#423e3e">Regresar</button>
+            </content>
+        </div>
+    </div>
+    <div class="p-a" ng-style="displayLoading">
+        <div id="cover" class="cover">
+        </div>
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/Factory/TokenFactory.js"></script>
+<script src="~/Scripts/Controller/ValidateTokenController.js"></script>
+<script src="~/Scripts/Controller/OperacionControlller.js"></script>
+
+
+
+

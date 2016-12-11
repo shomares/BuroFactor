@@ -24,11 +24,28 @@ namespace BuroFactorWS
         [OperationContract]
         ClientesResponse RegistraClientes(String ticket);
 
+        [OperationContract]
+        BuroResponse ConsultaBuro(String RFC);
+
+        [OperationContract]
+        ClientesResponse EditaCliente(CambiaClienteRequest editar);
+
+        [OperationContract]
+        OperacionResponse ValidaOperaciones(List<OperacionCarga> lista);
+
+        [OperationContract]
+        OperacionResponse RegistraOperaciones(String ticket);
+
+        [OperationContract]
+        OperacionResponse CambiaEstado(List<CambiaEstadoOperacionRequest> estados);
+
+
+
 
         // TODO: Add your service operations here
     }
 
-   
+
 
 
 }
